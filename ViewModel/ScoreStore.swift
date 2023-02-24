@@ -10,7 +10,8 @@ import CoreData
 
 class ScoreStore: ObservableObject {
     @Published var scores: [Score] = []
-
+    @Published var searchText = ""
+    
     init() {
         fetchScores()
     }
@@ -61,5 +62,24 @@ class ScoreStore: ObservableObject {
     func deleteItems(offsets: IndexSet) {
         offsets.map { scores[$0] }.forEach(PersistenceController.shared.container.viewContext.delete)
        saveChanges()
+    }
+    var filteredScores: [Score] {
+            if searchText.isEmpty {
+                return scores
+            } else {
+                return scores.filter { $0.name?.range(of: searchText, options: .caseInsensitive) != nil }
+            }
+        }
+        
+    func filterScores() {
+        let request = NSFetchRequest<Score>(entityName: "Score")
+        if !searchText.isEmpty {
+            request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+        }
+        do {
+            scores = try PersistenceController.shared.container.viewContext.fetch(request)
+        } catch {
+            print("Error fetching. \(error)")
+        }
     }
 }

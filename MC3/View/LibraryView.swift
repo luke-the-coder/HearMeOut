@@ -9,16 +9,12 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct LibraryView: View {
-    @State private var searchText = ""
     @State private var openFile = false
-    
-    @StateObject private var viewModel = ScoreStore()
-    @StateObject private var viewModelFiltered = ScoreStore()
-    
+    @StateObject private var viewModel = ScoreStore()    
     var body: some View {
         NavigationStack {
             List(){
-                ForEach(viewModel.scores) { score in
+                ForEach(viewModel.filteredScores) { score in
                     HStack(spacing: 16){
                         Image(systemName: "music.note.list").font(.system(size: 35.0))
                         VStack(alignment: .leading){
@@ -35,13 +31,7 @@ struct LibraryView: View {
                         self.openFile.toggle()
                     }
                 }
-            }.searchable(text: $searchText, prompt: "Songs, Composer...").onChange(of: searchText) { searchText in
-//                if !searchText.isEmpty {
-//                    viewModel.scores = viewModelFiltered.scores.filter { $0.name?.localizedCaseInsensitiveContains(searchText) ?? false}
-//                } else {
-//                    viewModel.scores = viewModelFiltered.scores
-//                }
-            }
+            }.searchable(text: $viewModel.searchText, prompt: "Songs, Composer...")
             .fileImporter(isPresented: $openFile, allowedContentTypes: [UTType(filenameExtension: "musicxml")!]) { (res) in
                 do{
                     

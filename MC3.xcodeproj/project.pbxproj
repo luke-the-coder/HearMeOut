@@ -21,6 +21,7 @@
 		0EB0970E29A7DEC500D3EDD3 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		0EB0971029A7DECF00D3EDD3 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0EB0971229A7E05B00D3EDD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0ECBA2E129A954BE009BA16C /* MC3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MC3.entitlements; sourceTree = "<group>"; };
 		0EDCD072299A4EF100E4AF25 /* MC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EDCD075299A4EF100E4AF25 /* MC3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3App.swift; sourceTree = "<group>"; };
 		0EDCD077299A4EF100E4AF25 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		0EDCD074299A4EF100E4AF25 /* MC3 */ = {
 			isa = PBXGroup;
 			children = (
+				0ECBA2E129A954BE009BA16C /* MC3.entitlements */,
 				0EB0971229A7E05B00D3EDD3 /* Info.plist */,
 				0EDCD075299A4EF100E4AF25 /* MC3App.swift */,
 				0EAFED9329A8C93300EFAD2B /* View */,
@@ -302,6 +304,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MC3/MC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3/Preview Content\"";
@@ -331,6 +334,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MC3/MC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3/Preview Content\"";
