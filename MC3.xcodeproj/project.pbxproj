@@ -7,16 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EAFED9629A8DB6E00EFAD2B /* ScoreStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFED9529A8DB6E00EFAD2B /* ScoreStore.swift */; };
+		0EB0970F29A7DEC500D3EDD3 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0EB0970D29A7DEC500D3EDD3 /* Database.xcdatamodeld */; };
+		0EB0971129A7DECF00D3EDD3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB0971029A7DECF00D3EDD3 /* Persistence.swift */; };
 		0EDCD076299A4EF100E4AF25 /* MC3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCD075299A4EF100E4AF25 /* MC3App.swift */; };
-		0EDCD078299A4EF100E4AF25 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCD077299A4EF100E4AF25 /* ContentView.swift */; };
+		0EDCD078299A4EF100E4AF25 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCD077299A4EF100E4AF25 /* LibraryView.swift */; };
 		0EDCD07A299A4EF200E4AF25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCD079299A4EF200E4AF25 /* Assets.xcassets */; };
 		0EDCD07D299A4EF200E4AF25 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCD07C299A4EF200E4AF25 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EAFED9529A8DB6E00EFAD2B /* ScoreStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStore.swift; sourceTree = "<group>"; };
+		0EB0970E29A7DEC500D3EDD3 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
+		0EB0971029A7DECF00D3EDD3 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		0EB0971229A7E05B00D3EDD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0EDCD072299A4EF100E4AF25 /* MC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EDCD075299A4EF100E4AF25 /* MC3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3App.swift; sourceTree = "<group>"; };
-		0EDCD077299A4EF100E4AF25 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0EDCD077299A4EF100E4AF25 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		0EDCD079299A4EF200E4AF25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EDCD07C299A4EF200E4AF25 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,10 +39,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EAFED9329A8C93300EFAD2B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0EDCD077299A4EF100E4AF25 /* LibraryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0EAFED9429A8DB3800EFAD2B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0EB0970D29A7DEC500D3EDD3 /* Database.xcdatamodeld */,
+				0EB0971029A7DECF00D3EDD3 /* Persistence.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0EAFED9929A8FEDC00EFAD2B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0EAFED9529A8DB6E00EFAD2B /* ScoreStore.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		0EDCD069299A4EF100E4AF25 = {
 			isa = PBXGroup;
 			children = (
 				0EDCD074299A4EF100E4AF25 /* MC3 */,
+				0EAFED9929A8FEDC00EFAD2B /* ViewModel */,
 				0EDCD073299A4EF100E4AF25 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,10 +84,12 @@
 		0EDCD074299A4EF100E4AF25 /* MC3 */ = {
 			isa = PBXGroup;
 			children = (
+				0EB0971229A7E05B00D3EDD3 /* Info.plist */,
 				0EDCD075299A4EF100E4AF25 /* MC3App.swift */,
-				0EDCD077299A4EF100E4AF25 /* ContentView.swift */,
+				0EAFED9329A8C93300EFAD2B /* View */,
 				0EDCD079299A4EF200E4AF25 /* Assets.xcassets */,
 				0EDCD07B299A4EF200E4AF25 /* Preview Content */,
+				0EAFED9429A8DB3800EFAD2B /* Model */,
 			);
 			path = MC3;
 			sourceTree = "<group>";
@@ -137,8 +172,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EDCD078299A4EF100E4AF25 /* ContentView.swift in Sources */,
+				0EB0970F29A7DEC500D3EDD3 /* Database.xcdatamodeld in Sources */,
+				0EDCD078299A4EF100E4AF25 /* LibraryView.swift in Sources */,
+				0EAFED9629A8DB6E00EFAD2B /* ScoreStore.swift in Sources */,
 				0EDCD076299A4EF100E4AF25 /* MC3App.swift in Sources */,
+				0EB0971129A7DECF00D3EDD3 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +308,7 @@
 				DEVELOPMENT_TEAM = 2MD4NXFV5G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = MC3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -299,7 +337,7 @@
 				DEVELOPMENT_TEAM = 2MD4NXFV5G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = MC3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -339,6 +377,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0EB0970D29A7DEC500D3EDD3 /* Database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0EB0970E29A7DEC500D3EDD3 /* Database.xcdatamodel */,
+			);
+			currentVersion = 0EB0970E29A7DEC500D3EDD3 /* Database.xcdatamodel */;
+			path = Database.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0EDCD06A299A4EF100E4AF25 /* Project object */;
 }
