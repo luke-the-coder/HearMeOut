@@ -10,6 +10,9 @@
 		0EAFED9629A8DB6E00EFAD2B /* ScoreStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFED9529A8DB6E00EFAD2B /* ScoreStore.swift */; };
 		0EB0970F29A7DEC500D3EDD3 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0EB0970D29A7DEC500D3EDD3 /* Database.xcdatamodeld */; };
 		0EB0971129A7DECF00D3EDD3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB0971029A7DECF00D3EDD3 /* Persistence.swift */; };
+		0ECBA2E329A969BB009BA16C /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECBA2E229A969BB009BA16C /* ScoreView.swift */; };
+		0ECBA2E529A97C5B009BA16C /* ScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECBA2E429A97C5B009BA16C /* ScoreModel.swift */; };
+		0ECBA2E929A97E56009BA16C /* MusicXML in Frameworks */ = {isa = PBXBuildFile; productRef = 0ECBA2E829A97E56009BA16C /* MusicXML */; };
 		0EDCD076299A4EF100E4AF25 /* MC3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCD075299A4EF100E4AF25 /* MC3App.swift */; };
 		0EDCD078299A4EF100E4AF25 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCD077299A4EF100E4AF25 /* LibraryView.swift */; };
 		0EDCD07A299A4EF200E4AF25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCD079299A4EF200E4AF25 /* Assets.xcassets */; };
@@ -22,6 +25,8 @@
 		0EB0971029A7DECF00D3EDD3 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0EB0971229A7E05B00D3EDD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0ECBA2E129A954BE009BA16C /* MC3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MC3.entitlements; sourceTree = "<group>"; };
+		0ECBA2E229A969BB009BA16C /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		0ECBA2E429A97C5B009BA16C /* ScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreModel.swift; sourceTree = "<group>"; };
 		0EDCD072299A4EF100E4AF25 /* MC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EDCD075299A4EF100E4AF25 /* MC3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3App.swift; sourceTree = "<group>"; };
 		0EDCD077299A4EF100E4AF25 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -34,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ECBA2E929A97E56009BA16C /* MusicXML in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +50,7 @@
 			isa = PBXGroup;
 			children = (
 				0EDCD077299A4EF100E4AF25 /* LibraryView.swift */,
+				0ECBA2E229A969BB009BA16C /* ScoreView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -51,6 +58,7 @@
 		0EAFED9429A8DB3800EFAD2B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0ECBA2E429A97C5B009BA16C /* ScoreModel.swift */,
 				0EB0970D29A7DEC500D3EDD3 /* Database.xcdatamodeld */,
 				0EB0971029A7DECF00D3EDD3 /* Persistence.swift */,
 			);
@@ -120,6 +128,9 @@
 			dependencies = (
 			);
 			name = MC3;
+			packageProductDependencies = (
+				0ECBA2E829A97E56009BA16C /* MusicXML */,
+			);
 			productName = MC3;
 			productReference = 0EDCD072299A4EF100E4AF25 /* MC3.app */;
 			productType = "com.apple.product-type.application";
@@ -148,6 +159,9 @@
 				Base,
 			);
 			mainGroup = 0EDCD069299A4EF100E4AF25;
+			packageReferences = (
+				0ECBA2E729A97E56009BA16C /* XCRemoteSwiftPackageReference "MusicXML" */,
+			);
 			productRefGroup = 0EDCD073299A4EF100E4AF25 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -179,6 +193,8 @@
 				0EAFED9629A8DB6E00EFAD2B /* ScoreStore.swift in Sources */,
 				0EDCD076299A4EF100E4AF25 /* MC3App.swift in Sources */,
 				0EB0971129A7DECF00D3EDD3 /* Persistence.swift in Sources */,
+				0ECBA2E329A969BB009BA16C /* ScoreView.swift in Sources */,
+				0ECBA2E529A97C5B009BA16C /* ScoreModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +397,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0ECBA2E729A97E56009BA16C /* XCRemoteSwiftPackageReference "MusicXML" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dn-m/MusicXML";
+			requirement = {
+				branch = latest;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0ECBA2E829A97E56009BA16C /* MusicXML */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0ECBA2E729A97E56009BA16C /* XCRemoteSwiftPackageReference "MusicXML" */;
+			productName = MusicXML;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0EB0970D29A7DEC500D3EDD3 /* Database.xcdatamodeld */ = {

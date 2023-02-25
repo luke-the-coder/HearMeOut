@@ -35,27 +35,29 @@ class ScoreStore: ObservableObject {
            }
        }
     
-    private func addItem(fileURL : URL) {
+    private func addItem(fileURL : URL, Title : String, Author: String){
         let newItem = Score(context: PersistenceController.shared.container.viewContext)
         newItem.timestamp = Date()
         newItem.path = fileURL
-        newItem.name = fileURL.deletingPathExtension().lastPathComponent
+        newItem.composer = Author
+        newItem.movementTitle = Title
+        newItem.filename = fileURL.deletingPathExtension().lastPathComponent
         saveChanges()
     }
     
-    func checkSavedScores(fileURL : URL){
-        for score in scores{
-            if (score.path! == fileURL){
+    func checkSavedScores(fileURL : URL, Title : String, Author: String){
+        for Score in scores{
+            if (Score.path! == fileURL){
                 print("ERROR: FILE ALREADY SAVED")
                 return
             }
         }
         print("New file found: let me add it.")
-        addItem(fileURL: fileURL)
+        addItem(fileURL: fileURL, Title: Title, Author: Author)
     }
     
-    func deleteScore(score: Score) {
-        PersistenceController.shared.container.viewContext.delete(score)
+    func deleteScore(Score: Score) {
+        PersistenceController.shared.container.viewContext.delete(Score)
         saveChanges()
     }
     
@@ -67,7 +69,7 @@ class ScoreStore: ObservableObject {
             if searchText.isEmpty {
                 return scores
             } else {
-                return scores.filter { $0.name?.range(of: searchText, options: .caseInsensitive) != nil }
+                return scores.filter { $0.movementTitle?.range(of: searchText, options: .caseInsensitive) != nil }
             }
         }
         
