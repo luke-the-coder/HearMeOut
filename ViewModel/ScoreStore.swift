@@ -84,4 +84,23 @@ class ScoreStore: ObservableObject {
             print("Error fetching. \(error)")
         }
     }
+    
+    func updateScore(score: Score, bpm: Int16, hasMetronome: Bool, staff : String, tempo: String) {
+        let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "path == %@", score.path! as CVarArg)
+        do {
+            let fetchedScore = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
+            if (fetchedScore.first != nil) {
+                fetchedScore.first!.bpm = bpm
+                fetchedScore.first!.hasMetronome = hasMetronome
+                fetchedScore.first!.staff = staff
+                fetchedScore.first!.tempo = tempo
+                print("Succesfully updated the settings!")
+                saveChanges()
+            }
+        } catch {
+            print("Error fetching user: \(error)")
+        }
+    }
+
 }

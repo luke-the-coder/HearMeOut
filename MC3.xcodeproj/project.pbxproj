@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0EAFED9629A8DB6E00EFAD2B /* ScoreStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFED9529A8DB6E00EFAD2B /* ScoreStore.swift */; };
+		0EB092CB29AA2BF00041C330 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB092CA29AA2BF00041C330 /* SettingView.swift */; };
 		0EB0970F29A7DEC500D3EDD3 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0EB0970D29A7DEC500D3EDD3 /* Database.xcdatamodeld */; };
 		0EB0971129A7DECF00D3EDD3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB0971029A7DECF00D3EDD3 /* Persistence.swift */; };
 		0ECBA2E329A969BB009BA16C /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECBA2E229A969BB009BA16C /* ScoreView.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		0EAFED9529A8DB6E00EFAD2B /* ScoreStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStore.swift; sourceTree = "<group>"; };
+		0EB092CA29AA2BF00041C330 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		0EB0970E29A7DEC500D3EDD3 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		0EB0971029A7DECF00D3EDD3 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0EB0971229A7E05B00D3EDD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			children = (
 				0EDCD077299A4EF100E4AF25 /* LibraryView.swift */,
 				0ECBA2E229A969BB009BA16C /* ScoreView.swift */,
+				0EB092CA29AA2BF00041C330 /* SettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				0EB0970F29A7DEC500D3EDD3 /* Database.xcdatamodeld in Sources */,
 				0EDCD078299A4EF100E4AF25 /* LibraryView.swift in Sources */,
 				0EAFED9629A8DB6E00EFAD2B /* ScoreStore.swift in Sources */,
+				0EB092CB29AA2BF00041C330 /* SettingView.swift in Sources */,
 				0EDCD076299A4EF100E4AF25 /* MC3App.swift in Sources */,
 				0EB0971129A7DECF00D3EDD3 /* Persistence.swift in Sources */,
 				0ECBA2E329A969BB009BA16C /* ScoreView.swift in Sources */,

@@ -48,11 +48,8 @@ struct LibraryView: View {
                             } else {
                                 viewModel.checkSavedScores(fileURL: fileUrl, Title: (musicScore.work?.workTitle) ?? "null", Author:  (musicScore.identification?.creator) ?? "null")
                             }
-
-
                         } catch {
                             print(error.localizedDescription)
-                            debugPrint(error)
                         }
                         fileUrl.stopAccessingSecurityScopedResource()
                     } catch{
@@ -77,11 +74,18 @@ struct IdentifiedURL: Identifiable {
 private struct ScoreRowView: View {
     let score: Score
     var body: some View {
-            HStack(spacing: 16){
-                Image(systemName: "music.note.list").font(.system(size: 35.0))
+        HStack(spacing: 16){
+                Image(systemName: "music.note.list").font(.system(size: 35.0)).foregroundColor(.accentColor)
                 VStack(alignment: .leading){
                     Text(score.movementTitle ?? "null").bold()
                     Text(score.composer ?? "null")
+//                    Text("---- DEBUG LINE ----")
+//
+//                    Text("\(score)")
+//
+//                    Text("---- DEBUG LINE ----")
+                    Spacer()
+
                 }
             }
             

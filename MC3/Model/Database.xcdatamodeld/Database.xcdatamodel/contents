@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Score" representedClassName="Score" syncable="YES" codeGenerationType="class">
+        <attribute name="bpm" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="composer" optional="YES" attributeType="String"/>
         <attribute name="filename" optional="YES" attributeType="String"/>
+        <attribute name="hasMetronome" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="movementTitle" optional="YES" attributeType="String"/>
         <attribute name="path" optional="YES" attributeType="URI"/>
+        <attribute name="staff" optional="YES" attributeType="String"/>
+        <attribute name="tempo" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
 </model>
