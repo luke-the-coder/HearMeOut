@@ -18,7 +18,7 @@ struct LibraryView: View {
         NavigationStack {
             List(){
                 ForEach(viewModel.filteredScores) { score in
-                    if let destination = try? ScoreView(musicSheet: score) {
+                    if let destination = try? ScoreView() {
                         NavigationLink(destination: destination) {
                             ScoreRowView(score: score)
                         }

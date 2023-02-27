@@ -4,26 +4,28 @@
 //
 //  Created by Marta Michelle Caliendo on 24/02/23.
 //
+
 import SwiftUI
+
 
 struct SettingsView: View {
     @State private var done: Bool = false
-    private var pickerArray = ["Staff 1", "Staff 2", "Staff 3"]
+    @State private var toggleDictionary: [String: Bool] = ["Staff 1": false, "Staff 2": false, "Staff 3": false]
     @State private var selectedIndex = ""
     private var pickerArray2 = ["4/4", "3/4", "2/4", "1/4"]
     @State private var selectedIndex2 = ""
     @State var currentSelection: Division = .all
     @State private var showView = true
-    @State var count: Int16
-    @Environment (\.dismiss) private var dismiss
-    let countMin: Int16 = 40
-    let countMax: Int16 = 120
+    @State var count: Int
+    @StateObject var vm2 = Metronome()
     
-    @StateObject private var viewModel = ScoreStore()
-    let score: Score
-    init(score : Score) {
-        self.score = score
+    @Environment (\.dismiss) private var dismiss
+    let countMin: Int = 40
+    let countMax: Int = 120
+    
+    init() {
         self._count = State(initialValue: countMin)
+        
     }
     
     var body: some View {
@@ -31,37 +33,52 @@ struct SettingsView: View {
             List {
                 Section("Reading by") {
                     ForEach(Division.allCases, id: \.rawValue) { division in
-                        Content(currentSelection: currentSelection, division: division).onTapGesture {
+                        Content(currentSelection: currentSelection, division: division)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
                                 currentSelection = division
-                        }
-                    }
-                }
-                Section{
-                    VStack {
-                        Picker("Choose a staff", selection: $selectedIndex) {
-                            ForEach(pickerArray, id: \.self) {
-                                Text($0).id($0)
                             }
-                        }
                     }
                 }
-                Section("Metronomo") {
+                Section("Select staff")
+                {
+                    ForEach(allKeys, id: \.self) { key in
+                        Toggle(key, isOn: binding(for: key))
+                    }
+                    
+                }
+                
+                Section {
                     VStack {
                         Toggle("Metronomo", isOn: $showView)
+                            .onChange(of: showView) { newValue in
+                                vm2.enabled.toggle()
+                            }
+                        
                         if showView {
                             VStack {
                                 HStack {
-                                    Text("BPM").padding(.trailing, 30)
+                                    Text("BPM")
+                                        .padding(.trailing, 30)
                                     Button {
                                         if count > countMin {
                                             count -= 1
                                         }
+                                        
                                     } label: {
-                                        RoundedRectangle(cornerRadius: 2).frame(width: 60).foregroundColor(.white).shadow(radius: 5).overlay {
+                                        RoundedRectangle(cornerRadius: 2)
+                                            .frame(width: 60)
+                                            .foregroundColor(.white)
+                                            .shadow(radius: 5)
+                                            .overlay {
                                                 Text("-")
                                             }
-                                    }.buttonStyle(.plain)
-                                    RoundedRectangle(cornerRadius: 2).foregroundColor(Color.gray).frame(width: 100).overlay {
+                                    }
+                                    .buttonStyle(.plain)
+                                    RoundedRectangle(cornerRadius: 2)
+                                        .foregroundColor(Color.gray)
+                                        .frame(width: 100)
+                                        .overlay {
                                             Text("\(count)")
                                                 .foregroundColor(.white)
                                         }
@@ -72,33 +89,68 @@ struct SettingsView: View {
                                             return
                                         }
                                     } label: {
-                                        RoundedRectangle(cornerRadius: 2).frame(width: 60).foregroundColor(.white).shadow(radius: 5).overlay {
+                                        RoundedRectangle(cornerRadius: 2)
+                                            .frame(width: 60)
+                                            .foregroundColor(.white)
+                                            .shadow(radius: 5)
+                                            .overlay {
                                                 Text("+")
                                             }
-                                    }.buttonStyle(.plain)
+                                    }
+                                    .buttonStyle(.plain)
+                                    
                                 }
                                 VStack {
-                                    Picker("Choose a tempo", selection: $selectedIndex2) {
+                                    Picker("Beat", selection: $selectedIndex2) {
                                         ForEach(pickerArray2, id: \.self) {
-                                            Text($0).id($0)
+                                            Text($0)
+                                                .id($0)
                                         }
                                     }
-                                }.padding(.top, 20)
-                            } .padding(.top, 20)
+                                }.padding(.top, 10)
+                            } .padding(.top, 15)
                         }
                     }
                 }
-            } .navigationTitle("Settings")
-                .toolbar {
+                //.listRowInsets(.init())
+            }
+            .navigationTitle("Settings")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         done.toggle()
-                        viewModel.updateScore(score: score, bpm: count, hasMetronome: showView, staff: selectedIndex, tempo: selectedIndex2)
                         dismiss()
+                        
                     } label: {
                         Text("Done")
                     }
                 }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        done.toggle()
+                        dismiss()
+                        
+                    } label: {
+                        Text("Cancel")
+                        
+                    }
+                }
+            }
         }
+        
+    }
+    
+    private var allKeys: [String] {
+        return toggleDictionary.keys.sorted().map { String($0) }
+    }
+    
+    private func binding(for key: String) -> Binding<Bool> {
+        return Binding(get: {
+            return self.toggleDictionary[key] ?? false
+        }, set: {
+            self.toggleDictionary[key] = $0
+        })
     }
 }
 
@@ -109,14 +161,15 @@ enum Division: String, CaseIterable {
 }
 
 
-//struct SettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationStack {
-//            SettingsView()
-//        }
-//
-//    }
-//}
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        //        Content(currentSelection: .all, division: .all)
+        NavigationStack {
+            SettingsView()
+        }
+        
+    }
+}
 
 
 struct Content: View {
@@ -125,10 +178,12 @@ struct Content: View {
     var body: some View {
         HStack {
             Text(division.rawValue)
+                .accessibilityLabel("\(division.rawValue) \(division == currentSelection ? "is on" : "is off")")
             Spacer()
             Image(systemName: "checkmark")
                 .opacity(division == currentSelection ? 1.0 : 0.0)
-            
+                .accessibilityHidden(true)
+                
         }
     }
     
