@@ -9,7 +9,7 @@ import Foundation
 
 
 class TimeScore: ParserBase {
-    var beatType: BeatType = .fourQaurter
+    var beatType: BeatType = .none
     
     private var numerator: Int = 1
     private var denominator: Int = 4

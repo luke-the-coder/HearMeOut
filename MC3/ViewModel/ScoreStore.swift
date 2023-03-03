@@ -5,17 +5,41 @@
 //  Created by luke-the-coder on 24/02/23.
 //
 
-import Foundation
+import SwiftUI
 import CoreData
 
 class ScoreStore: ObservableObject {
     @Published var scores: [Score] = []
     @Published var searchText = ""
+    @AppStorage("firstLoad") var firstLoad: Bool = false
     
     init() {
+        if !firstLoad {
+            firstUpload()
+        }
         fetchScores()
     }
-
+    
+    private func firstUpload() {
+        let scoreItems: [String] = ["Chant", "MozartPianoSonata"]
+        
+        for score in scoreItems {
+            let fileUrl = Bundle.main.url(forResource: score , withExtension: "musicxml")!
+            
+            do {
+                let musicScore = try MusicXMLDecoder.decode(type: ScoreModel.self, from: fileUrl)
+                if (musicScore.movementTitle != nil) {
+                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.movementTitle) ?? "null", Author:  (musicScore.identification?.creator) ?? "null")
+                } else {
+                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.work?.workTitle) ?? "null", Author:  (musicScore.identification?.creator) ?? "null")
+                }
+                firstLoad = true
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     private func fetchScores() {
         let request = NSFetchRequest<Score>(entityName: "Score")
         do {

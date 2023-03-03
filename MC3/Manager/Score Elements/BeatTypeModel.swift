@@ -16,6 +16,31 @@ enum BeatType: String {
     case sixtEight = "6/8"
     case nineEight = "9/8"
     case twelveEight = "12/8"
+    case none
+    
+    var description: String {
+        switch self {
+        case .oneQuarter:
+            return "oneQuarter"
+        case .twoQuarter:
+            return "twoQuarter"
+        case .threeQuarter:
+            return "threeQuarter"
+        case .fourQaurter:
+            return "fourQaurter"
+        case .threeEight:
+            return "threeEight"
+        case .sixtEight:
+            return "sixtEight"
+        case .nineEight:
+            return "nineEight"
+        case .twelveEight:
+            return "twelveEight"
+        case .none:
+            return ""
+            
+        }
+    }
     
     func getBeatType(_ numerator: Int, _ denominator: Int) -> Self {
         if denominator == 4 {

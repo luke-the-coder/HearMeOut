@@ -8,13 +8,16 @@
 import Foundation
 
 class ParserManager {
-    let url: URL = Bundle.main.url(forResource: "BrahWiMeSample" , withExtension: "musicxml")!
+    let url: URL = Bundle.main.url(forResource: "Chant" , withExtension: "musicxml")!
     
     init() {
         
     }
     
     func parseFromUrl(url: URL) -> ScorePartwise? {
+//        print("parseFromUrl \(url)")
+        let url: URL = Bundle.main.url(forResource: "MozartPianoSonata" , withExtension: "musicxml")!
+//        print("parseFromUrl \(url)")
         do {
             let string = try String(contentsOf: url)
             let data = string.data(using: .utf8)!

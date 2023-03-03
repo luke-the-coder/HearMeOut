@@ -1,5 +1,5 @@
 //
-//  MusicManager.swift
+//  ScoreViewModel.swift
 //  BlindMusic
 //
 //  Created by Nicola Rigoni on 19/01/23.
@@ -10,11 +10,12 @@ import MidiParser
 import AVFAudio
 import AVFoundation
 
-class MusicScoreViewModel: ObservableObject {
+class ScoreViewModel: ObservableObject {
     @Published var musicScore: ScorePartwise?
+    @Published var measureIndex: Int = 0
+    
     let url: URL = Bundle.main.url(forResource: "Chant" , withExtension: "musicxml")! //MozartPianoSonata
     let soundBankURL: URL = Bundle.main.url(forResource: "YDP-GrandPiano-20160804" , withExtension: "sf2")!
-    let midiSoundURL: URL = Bundle.main.url(forResource: "for_elise_by_beethoven" , withExtension: "mid")!
 
     let midi = MidiData()
     var midiPlayer: AVMIDIPlayer!
@@ -22,14 +23,85 @@ class MusicScoreViewModel: ObservableObject {
     
     let parserManager: ParserManager = ParserManager()
     
+    @Published var focusElements: [FocusModel] = []
     
-    init() {
+    var minIndexScore: Int? {
+        if let musicScore {
+           return musicScore.part.measure[0].id
+        }
+        return nil
+    }
+    
+    var maxIndexScore: Int? {
+        if let musicScore {
+            let endIndex = musicScore.part.measure.endIndex
+            return musicScore.part.measure[endIndex].id
+        }
+        return nil
+    }
+    
+    var maxIndexMeasure: Int? {
+        if let musicScore {
+            return musicScore.part.measure.count - 1
+        }
+        return nil
+    }
+    
+    
+    init(url: URL) {
         musicScore = parserManager.parseFromUrl(url: url)
         
         createMidi(measureStart: 1, measureEnd: 1, bpm: 60)
+        
+        
+        generateFocusArray()
     }
     
 
+    func goNext() {
+        guard let maxIndexMeasure else { return }
+        
+        if measureIndex < maxIndexMeasure {
+            measureIndex += 1
+        }
+    }
+    
+    func goPrevious() {
+        
+        if measureIndex > 0 {
+            measureIndex -= 1
+        }
+    }
+    
+    func generateFocusArray() {
+        guard let musicScore else { return }
+        
+        let measureAtIndex = musicScore.part.measure[measureIndex]
+        var clefIndex: Int = 0
+        var beatIndex: Int = 0
+        
+        
+        
+        for staf in measureAtIndex.staffGroup {
+            for groupIndex in 0..<staf.group.count {
+                if !measureAtIndex.attributes.clef.isEmpty {
+                    let clefFocusElement: FocusModel = FocusModel.clef(id: clefIndex)
+                    focusElements.append(clefFocusElement)
+                    clefIndex += 1
+                }
+                
+                if measureAtIndex.attributes.time.beatType != .none {
+                    let beatFocusElement: FocusModel = FocusModel.beat(id: beatIndex)
+                    focusElements.append(beatFocusElement)
+                    beatIndex += 1
+                }
+                
+                let groupFocusElement: FocusModel = FocusModel.note(id: groupIndex)
+                focusElements.append(groupFocusElement)
+            }
+        }
+        
+    }
     
     func createMidi(measureStart: Int, measureEnd: Int, bpm: Int) {
         guard let musicScore else { return }

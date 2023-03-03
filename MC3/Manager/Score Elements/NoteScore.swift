@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NoteScore: ParserBase {
+class NoteScore: ParserBase, Identifiable {
     let id: String = UUID().uuidString
     var pitch: PitchScore = PitchScore()
     var duration: Int = 0

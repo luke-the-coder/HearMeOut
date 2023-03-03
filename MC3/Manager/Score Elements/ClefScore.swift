@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ClefScore: ParserBase {
+class ClefScore: ParserBase, Identifiable {
     var id: Int = 0
     var sign: ClefSign = .none
     var line: Int = 0

@@ -24,7 +24,7 @@
 		0E7F163329ACC2000067AEA2 /* PitchScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7F162529ACC2000067AEA2 /* PitchScore.swift */; };
 		0E7F163429ACC2000067AEA2 /* AttributeScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7F162629ACC2000067AEA2 /* AttributeScore.swift */; };
 		0E7F163829ACC2600067AEA2 /* ParserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7F163629ACC2600067AEA2 /* ParserManager.swift */; };
-		0E7F163929ACC2600067AEA2 /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7F163729ACC2600067AEA2 /* MusicManager.swift */; };
+		0E7F163929ACC2600067AEA2 /* ScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7F163729ACC2600067AEA2 /* ScoreViewModel.swift */; };
 		0E7F163C29ACC2AE0067AEA2 /* MidiParser in Frameworks */ = {isa = PBXBuildFile; productRef = 0E7F163B29ACC2AE0067AEA2 /* MidiParser */; };
 		0E7F164729ACC2E60067AEA2 /* Echigo-Jishi.musicxml in Resources */ = {isa = PBXBuildFile; fileRef = 0E7F163E29ACC2E60067AEA2 /* Echigo-Jishi.musicxml */; };
 		0E7F164829ACC2E60067AEA2 /* Chant.musicxml in Resources */ = {isa = PBXBuildFile; fileRef = 0E7F163F29ACC2E60067AEA2 /* Chant.musicxml */; };
@@ -52,10 +52,11 @@
 		0EDCD078299A4EF100E4AF25 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCD077299A4EF100E4AF25 /* LibraryView.swift */; };
 		0EDCD07A299A4EF200E4AF25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCD079299A4EF200E4AF25 /* Assets.xcassets */; };
 		0EDCD07D299A4EF200E4AF25 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCD07C299A4EF200E4AF25 /* Preview Assets.xcassets */; };
+		246CE21929AE0AC900CF4AA8 /* PitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246CE21829AE0AC900CF4AA8 /* PitchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E7F161229ACC0D70067AEA2 /* YDP-GrandPiano-20160804.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YDP-GrandPiano-20160804.sf2"; sourceTree = "<group>"; };
+		0E7F161229ACC0D70067AEA2 /* YDP-GrandPiano-20160804.sf2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "YDP-GrandPiano-20160804.sf2"; sourceTree = "<group>"; };
 		0E7F161629ACC1B70067AEA2 /* ScaleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleModel.swift; sourceTree = "<group>"; };
 		0E7F161929ACC2000067AEA2 /* WorkScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkScore.swift; sourceTree = "<group>"; };
 		0E7F161A29ACC2000067AEA2 /* NoteScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteScore.swift; sourceTree = "<group>"; };
@@ -72,7 +73,7 @@
 		0E7F162529ACC2000067AEA2 /* PitchScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchScore.swift; sourceTree = "<group>"; };
 		0E7F162629ACC2000067AEA2 /* AttributeScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeScore.swift; sourceTree = "<group>"; };
 		0E7F163629ACC2600067AEA2 /* ParserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserManager.swift; sourceTree = "<group>"; };
-		0E7F163729ACC2600067AEA2 /* MusicManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
+		0E7F163729ACC2600067AEA2 /* ScoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewModel.swift; sourceTree = "<group>"; };
 		0E7F163E29ACC2E60067AEA2 /* Echigo-Jishi.musicxml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Echigo-Jishi.musicxml"; sourceTree = "<group>"; };
 		0E7F163F29ACC2E60067AEA2 /* Chant.musicxml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Chant.musicxml; sourceTree = "<group>"; };
 		0E7F164029ACC2E60067AEA2 /* MozartPianoSonata.musicxml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MozartPianoSonata.musicxml; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		0EDCD077299A4EF100E4AF25 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		0EDCD079299A4EF200E4AF25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EDCD07C299A4EF200E4AF25 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		246CE21829AE0AC900CF4AA8 /* PitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +151,7 @@
 		0E7F163529ACC2460067AEA2 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				0E7F163729ACC2600067AEA2 /* MusicManager.swift */,
+				0E7F163729ACC2600067AEA2 /* ScoreViewModel.swift */,
 				0E7F163629ACC2600067AEA2 /* ParserManager.swift */,
 				0E7F161829ACC2000067AEA2 /* Score Elements */,
 			);
@@ -188,6 +190,7 @@
 			children = (
 				0EDCD077299A4EF100E4AF25 /* LibraryView.swift */,
 				0ECBA2E229A969BB009BA16C /* ScoreView.swift */,
+				246CE21829AE0AC900CF4AA8 /* PitchView.swift */,
 				0EB092CA29AA2BF00041C330 /* SettingView.swift */,
 			);
 			path = View;
@@ -375,7 +378,7 @@
 				0E7F163229ACC2000067AEA2 /* MeasureScore.swift in Sources */,
 				0ECBA2E329A969BB009BA16C /* ScoreView.swift in Sources */,
 				0E7F163329ACC2000067AEA2 /* PitchScore.swift in Sources */,
-				0E7F163929ACC2600067AEA2 /* MusicManager.swift in Sources */,
+				0E7F163929ACC2600067AEA2 /* ScoreViewModel.swift in Sources */,
 				0E7F161729ACC1B70067AEA2 /* ScaleModel.swift in Sources */,
 				0ECBA2E529A97C5B009BA16C /* ScoreModel.swift in Sources */,
 				0E7F162F29ACC2000067AEA2 /* ClefScore.swift in Sources */,
@@ -384,6 +387,7 @@
 				0E7F163829ACC2600067AEA2 /* ParserManager.swift in Sources */,
 				0E7F162C29ACC2000067AEA2 /* BackupScore.swift in Sources */,
 				0E7F165629ACC3340067AEA2 /* ScoreFinalModel.swift in Sources */,
+				246CE21929AE0AC900CF4AA8 /* PitchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,7 +517,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3/Preview Content\"";
-				DEVELOPMENT_TEAM = 2MD4NXFV5G;
+				DEVELOPMENT_TEAM = 7AGYKJGT3A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC3/Info.plist;
@@ -543,7 +547,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3/Preview Content\"";
-				DEVELOPMENT_TEAM = 2MD4NXFV5G;
+				DEVELOPMENT_TEAM = 7AGYKJGT3A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC3/Info.plist;

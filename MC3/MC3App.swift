@@ -12,6 +12,7 @@ struct MC3App: App {
     var body: some Scene {
         WindowGroup {
             LibraryView()
+//            ScoreView(url:Bundle.main.url(forResource: "MozartPianoSonata" , withExtension: "musicxml")!)
         }
     }
 }

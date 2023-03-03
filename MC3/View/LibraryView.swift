@@ -18,7 +18,7 @@ struct LibraryView: View {
         NavigationStack {
             List(){
                 ForEach(viewModel.filteredScores) { score in
-                    if let destination = try? ScoreView() {
+                    if let destination = ScoreView(url: score.path!) {
                         NavigationLink(destination: destination) {
                             ScoreRowView(score: score)
                         }
@@ -32,8 +32,9 @@ struct LibraryView: View {
                         self.openFile.toggle()
                     }
                 }
-            }.searchable(text: $viewModel.searchText, prompt: "Songs, Composer...")
-                .fileImporter(isPresented: $openFile, allowedContentTypes: [UTType(filenameExtension: "musicxml")!]) { (res) in
+            }
+            .searchable(text: $viewModel.searchText, prompt: "Songs, Composer...")
+            .fileImporter(isPresented: $openFile, allowedContentTypes: [UTType(filenameExtension: "musicxml")!]) { (res) in
                     
                     do{
                         let fileUrl = try res.get()
@@ -43,7 +44,7 @@ struct LibraryView: View {
                         self.selectedFile = IdentifiedURL(url: fileUrl)
                         do {
                             let musicScore = try MusicXMLDecoder.decode(type: ScoreModel.self, from: fileUrl)
-                            if (musicScore.movementTitle != nil){
+                            if (musicScore.movementTitle != nil) {
                                 viewModel.checkSavedScores(fileURL: fileUrl, Title: (musicScore.movementTitle) ?? "null", Author:  (musicScore.identification?.creator) ?? "null")
                             } else {
                                 viewModel.checkSavedScores(fileURL: fileUrl, Title: (musicScore.work?.workTitle) ?? "null", Author:  (musicScore.identification?.creator) ?? "null")

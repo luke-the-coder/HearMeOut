@@ -7,13 +7,32 @@
 
 import SwiftUI
 
+enum FocusModel: Hashable {
+    case clef(id: Int)
+    case beat(id: Int)
+    case note(id: Int)
+}
+
 struct ScoreView: View {
     @State var isNavigated: Bool = false
     @State var isActive: Bool = false
+    @StateObject private var vm: ScoreViewModel
+    @State private var clef: [ClefScore] = []
+    @State private var beatType: BeatType = .none
+    @State private var focusArray: [FocusModel] = [FocusModel.note(id: 0), FocusModel.note(id: 1)]
+    
+    @AccessibilityFocusState var focus: FocusModel?
+    
+    init(url: URL) {
+        self._vm = StateObject(wrappedValue: ScoreViewModel(url: url))
+    }
+    
+    
     var body: some View {
         VStack{
             contentLayer
                 .padding(.bottom, 40)
+            Spacer()
             HStack(spacing: 180) {
                 Button {
                     isActive.toggle()
@@ -21,10 +40,10 @@ struct ScoreView: View {
                     Text("Voice")
                         .foregroundColor(.black)
                         .background(
-                        Capsule()
+                    Capsule()
                         .stroke(Color.gray, lineWidth: 2)
                         .frame(width: 110, height: 50))
-                  
+
                 }
                 Button {
                     isActive.toggle()
@@ -32,13 +51,12 @@ struct ScoreView: View {
                     Text("Sound")
                         .foregroundColor(.black)
                         .background(
-                        Capsule()
+                    Capsule()
                         .stroke(Color.gray, lineWidth: 2)
                         .frame(width: 110, height: 50))
-                  
+
                 }
             }
-            Spacer()
             ZStack {
                 Capsule()
                     .foregroundColor(Color("Backgroundcolor2"))
@@ -46,7 +64,7 @@ struct ScoreView: View {
                     .padding()
                 HStack(spacing: 30) {
                     Button {
-                        
+                        vm.goPrevious()
                     } label: {
                         Capsule()
                             .foregroundColor(.white)
@@ -66,12 +84,12 @@ struct ScoreView: View {
                                 Image(systemName: "play.fill")
                                     .font(.system(size: 50))
                                     .foregroundColor(.black)
-                               
+
                             }
                     }
 
                     Button {
-                        
+                        vm.goNext()
                     } label: {
                         Capsule()
                             .foregroundColor(.white)
@@ -82,15 +100,14 @@ struct ScoreView: View {
                             }
                     }
 
-              
+
                 }
-     
+
             }
     
         
-    Spacer()
+//    Spacer()
         }
-
         .navigationTitle("Piano Sonta N.17")
         .toolbar {
             Button {
@@ -99,16 +116,105 @@ struct ScoreView: View {
                 Text("Settings")
             }
 
-        }.sheet(isPresented: $isNavigated) {
+        }
+        .sheet(isPresented: $isNavigated) {
            SettingsView()
+        }
+        .onChange(of: vm.measureIndex) { measure in
+            if let score = vm.musicScore {
+                for _ in  score.part.measure[vm.measureIndex].staffGroup {
+                    if !score.part.measure[vm.measureIndex].attributes.clef.isEmpty {
+                        clef = score.part.measure[vm.measureIndex].attributes.clef
+                    }
+                    if score.part.measure[vm.measureIndex].attributes.time.beatType != .none {
+                        beatType = score.part.measure[vm.measureIndex].attributes.time.beatType
+                    }
+                }
+            }
+        }
+        .onAppear {
+            if let score = vm.musicScore {
+                for _ in  score.part.measure[vm.measureIndex].staffGroup {
+                    if !score.part.measure[vm.measureIndex].attributes.clef.isEmpty {
+                        clef = score.part.measure[vm.measureIndex].attributes.clef
+                    }
+                    if score.part.measure[vm.measureIndex].attributes.time.beatType != .none {
+                        beatType = score.part.measure[vm.measureIndex].attributes.time.beatType
+                    }
+                }
+            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                focus = focusArray[0]
+//            }
         }
     }
     
+    @ViewBuilder
     var contentLayer: some View {
-        VStack {
-            MyContent(title: "Staff 1", image: "Key", notes:  "G4 C6 A9 B2 G3 R8 M5")
-            MyContent(title: "Staff 2", image: "Key", notes: "G4 C6 A9 B2 G3 R8 M5")
+        if let score = vm.musicScore {
+            
+            //qui prende ogni pentagramma per la battuta nell'indice
+            ForEach(Array(score.part.measure[vm.measureIndex].staffGroup.enumerated()), id: \.offset) { index, staff in
+                HStack {
+                    
+                    if !clef.isEmpty {
+                        Image(clef[index].sign.rawValue)
+                            .resizable()
+                            .frame(width: 50, height: 80)
+//                            .accessibilityFocused($focus, equals: focusArray[0])
+                            .accessibility(sortPriority: 2)
+             
+                    }
+                    
+                    if beatType != .none {
+                        beatTypeView(beatType)
+                            
+                            .accessibility(sortPriority: 1)
+                    }
+   
+                    //di ogni pentagramma
+                    VStack(alignment: .leading, spacing: 10) {
+                        //cicla per tutte le voci (gruppi) e crea le note/accordi
+                        ForEach(staff.group) { group in
+                            HStack(spacing: 20) {
+                                ForEach(group.note, id: \.self) { notes in
+                                    
+                                    PitchView(notes: notes)
+                                        .accessibility(sortPriority: 0)
+                                    
+                                }
+                            }
+                            //                        .accessibilityElement(children: .combine)
+                        }
+                    }
+                }
+                .accessibilityElement(children: .contain)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 150)
+                .background(.gray.opacity(0.6))
+                .cornerRadius(5)
+//                .shadow(color: .gray , radius: 10, y: 10)
+                .padding(.horizontal)
+            }
         }
+    }
+    
+    @ViewBuilder
+    func beatTypeView(_ beatType: BeatType) -> some View {
+        let fullString = beatType.rawValue.components(separatedBy: "/")
+        let numerator = fullString[0]
+        let denominator = fullString[1]
+        VStack(spacing: 1.5) {
+            Text(numerator)
+                .font(.title2)
+            Rectangle()
+                .frame(width: 20, height: 1.5)
+            Text(denominator)
+                .font(.title2)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibility(label: Text(beatType.description))
+        .padding(.trailing)
     }
     
 }
@@ -116,7 +222,7 @@ struct ScoreView: View {
 struct ScoreView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ScoreView()
+            ScoreView(url: Bundle.main.url(forResource: "MozartPianoSonata" , withExtension: "musicxml")!)
         }
     }
 }

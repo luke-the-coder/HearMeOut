@@ -17,7 +17,7 @@ struct GroupNote: Identifiable {
     let note: [[NoteScore]]
 }
 
-class MeasureScore: ParserBase {
+class MeasureScore: ParserBase, Identifiable {
     var id: Int = 0
     var attributes = AttributeScore()
     private var notes: [NoteScore] = []
