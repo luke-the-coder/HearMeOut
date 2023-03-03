@@ -142,8 +142,10 @@ struct SettingsView: View {
     }
     
     private var allKeys: [String] {
-        return toggleDictionary.keys.sorted().map { String($0) }
+        return toggleDictionary.keys.sorted().map { String($0)
+        }
     }
+    
     
     private func binding(for key: String) -> Binding<Bool> {
         return Binding(get: {
@@ -177,8 +179,9 @@ struct Content: View {
     let division: Division
     var body: some View {
         HStack {
-            Text(division.rawValue)
-                .accessibilityLabel("\(division.rawValue) \(division == currentSelection ? "is on" : "is off")")
+            Text(LocalizedStringKey(division.rawValue))
+            Spacer()
+//            Text(division.rawValue).accessibilityLabel("\(division.rawValue) \(division == currentSelection ? "is on" : "is off")")
             Spacer()
             Image(systemName: "checkmark")
                 .opacity(division == currentSelection ? 1.0 : 0.0)
