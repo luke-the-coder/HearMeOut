@@ -140,5 +140,18 @@ class ScoreStore: ObservableObject {
             print("Error fetching user: \(error)")
         }
     }
+    
+    func retrieveScore(path: URL) -> Score {
+        let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest()
+        var fetchedScore : [Score] = []
+        fetchRequest.predicate = NSPredicate(format: "path == %@", path as CVarArg)
+        do {
+            fetchedScore = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
+            
+        } catch {
+            print("Error fetching user: \(error)")
+        }
+        return fetchedScore.first!
+    }
 
 }

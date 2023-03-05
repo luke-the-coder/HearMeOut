@@ -20,13 +20,14 @@ struct ScoreView: View {
     @State private var clef: [ClefScore] = []
     @State private var beatType: BeatType = .none
     @State private var focusArray: [FocusModel] = [FocusModel.note(id: 0), FocusModel.note(id: 1)]
-    
     @AccessibilityFocusState var focus: FocusModel?
+    let scoreData : Score
     
     init(url: URL) {
         self._vm = StateObject(wrappedValue: ScoreViewModel(url: url))
+        self.scoreData = ScoreStore().retrieveScore(path: url)
+        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
     }
-    
     
     var body: some View {
         VStack{
@@ -108,7 +109,7 @@ struct ScoreView: View {
         
 //    Spacer()
         }
-        .navigationTitle("Piano Sonta N.17")
+        .navigationTitle(scoreData.movementTitle ?? "Musical Score")
         .toolbar {
             Button {
                 isNavigated.toggle()
