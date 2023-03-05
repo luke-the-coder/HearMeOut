@@ -18,6 +18,7 @@ class ScoreStore: ObservableObject {
             firstUpload()
         }
         fetchScores()
+        checkDeletedFile()
     }
     
     private func firstUpload() {
@@ -29,9 +30,9 @@ class ScoreStore: ObservableObject {
             do {
                 let musicScore = try MusicXMLDecoder.decode(type: ScoreModel.self, from: fileUrl)
                 if (musicScore.movementTitle != nil) {
-                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.movementTitle) ?? "null", Author:  (musicScore.identification?.creator) ?? "null")
+                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.movementTitle) ?? "", Author:  (musicScore.identification?.creator) ?? "")
                 } else {
-                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.work?.workTitle) ?? "null", Author:  (musicScore.identification?.creator) ?? "null")
+                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.work?.workTitle) ?? "", Author:  (musicScore.identification?.creator) ?? "")
                 }
                 firstLoad = true
             } catch {
@@ -67,6 +68,19 @@ class ScoreStore: ObservableObject {
         newItem.movementTitle = Title
         newItem.filename = fileURL.deletingPathExtension().lastPathComponent
         saveChanges()
+    }
+    
+    func checkDeletedFile(){
+        let fileManager = FileManager.default
+        
+        for Score in scores{
+            if fileManager.fileExists(atPath: Score.path!.path) {
+                print("File found in file manager")
+            } else {
+                print("File not found in file manager, deleting it in core data...")
+                deleteScore(Score: Score)
+            }
+        }
     }
     
     func checkSavedScores(fileURL : URL, Title : String, Author: String){

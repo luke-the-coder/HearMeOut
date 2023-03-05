@@ -78,8 +78,8 @@ private struct ScoreRowView: View {
         HStack(spacing: 16){
                 Image(systemName: "music.note.list").font(.system(size: 35.0)).foregroundColor(.accentColor)
                 VStack(alignment: .leading){
-                    Text(score.movementTitle ?? "null").bold()
-                    Text(score.composer ?? "null")
+                    Text(score.movementTitle ?? "No title").bold()
+                    Text(score.composer ?? "")
 //                    Text("---- DEBUG LINE ----")
 //
 //                    Text("\(score)")
