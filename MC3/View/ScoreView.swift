@@ -27,7 +27,7 @@ struct ScoreView: View {
     init(url: URL) {
         self._vm = StateObject(wrappedValue: ScoreViewModel(url: url))
         self.scoreData = ScoreStore().retrieveScore(path: url)
-        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
+ 
     }
     
     var body: some View {
@@ -116,6 +116,8 @@ struct ScoreView: View {
             //    Spacer()
         }
         .navigationTitle(scoreData.movementTitle ?? "Musical Score")
+        
+
         .toolbar {
             Button {
                 isNavigated.toggle()
