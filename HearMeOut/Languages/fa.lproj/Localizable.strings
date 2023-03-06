@@ -1,33 +1,45 @@
-"Add" = "افزودن";
+"Add" = "اضافه کردن";
 
-"BPM" = "BPM";
+"BPM" = "ضربان در دقیقه";
 
-"Choose a staff" = "انتخاب دست";
+"Choose a staff" = "انتخاب استفاده کننده";
 
-"Choose a tempo" = "انتخاب سرعت اجرای ضرب‌ها";
+"Choose a tempo" = "انتخاب زمان";
 
 "Done" = "انجام شد";
 
+"Cancel" = "لغو";
+
 "Metronomo" = "مترونوم";
 
-"Reading by" = "تقسیم بندی نت";
+"Reading by" = "خواندن توسط";
+
+"Reproduce by" = "بازتولید توسط";
 
 "Settings" = "تنظیمات";
 
-"Songs, Composer..." = "آهنگ، آهنگساز";
+"Songs, Composer..." = "آهنگ‌ها، آهنگساز...";
 
-"Bar" = "ضرب";
+"Bar" = "میزان";
 
-"Line" = "میزان";
+"Line" = "خط";
 
-"All" = "نت کامل";
+"All" = "کل نت‌ها";
 
-"Beat" = "ضربان";
+"Single note" = "نت تکی";
 
-"Select staff" = "انتخاب خط";
+"Beat" = "ضرب";
 
-"Staff 1" = "خط 1";
+"Select staff" = "انتخاب استفاده کننده";
 
-"Staff 2" = "خط 2";
+"Staff 1" = "استفاده کننده ۱";
 
-"Staff 3" = "خط 3";
+"Staff 2" = "استفاده کننده ۲";
+
+"Scores" = "امتیاز";
+
+"Next" = "بعدی";
+
+"Previous" = "قبلی".
+
+"Attention: you have already added this file" = "توجه: شما این فایل را قبلاً اضافه کرده‌اید";
