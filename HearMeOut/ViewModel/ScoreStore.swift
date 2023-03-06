@@ -12,6 +12,7 @@ class ScoreStore: ObservableObject {
     @Published var scores: [Score] = []
     @Published var searchText = ""
     @AppStorage("firstLoad") var firstLoad: Bool = false
+    let scoreItems: [String] = ["MozartPianoSonata","BrookeWestSample","BrahWiMeSample","MozaChloSample","Chant", "Echigo-Jishi"]
     
     init() {
         if !firstLoad {
@@ -22,17 +23,15 @@ class ScoreStore: ObservableObject {
     }
     
     private func firstUpload() {
-        let scoreItems: [String] = ["Chant", "MozartPianoSonata"]
-        
+       
         for score in scoreItems {
             let fileUrl = Bundle.main.url(forResource: score , withExtension: "musicxml")!
-            
             do {
                 let musicScore = try MusicXMLDecoder.decode(type: ScoreModel.self, from: fileUrl)
                 if (musicScore.movementTitle != nil) {
-                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.movementTitle) ?? "", Author:  (musicScore.identification?.creator) ?? "")
+                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.movementTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
                 } else {
-                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.work?.workTitle) ?? "", Author:  (musicScore.identification?.creator) ?? "")
+                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.work?.workTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
                 }
                 firstLoad = true
             } catch {
@@ -74,11 +73,17 @@ class ScoreStore: ObservableObject {
         let fileManager = FileManager.default
         
         for Score in scores{
-            if fileManager.fileExists(atPath: Score.path!.path) {
-                print("File found in file manager")
-            } else {
-                print("File not found in file manager, deleting it in core data...")
-                deleteScore(Score: Score)
+            if scoreItems.contains(Score.filename!) {
+                print("Default file, not deleting it")
+            }
+            else {
+                if fileManager.fileExists(atPath: Score.path!.path) {
+                    print("File found in file manager")
+                }
+                else {
+                    print("File not found in file manager, deleting it in core data...")
+                    deleteScore(Score: Score)
+                }
             }
         }
     }

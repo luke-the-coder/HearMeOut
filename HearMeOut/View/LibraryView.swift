@@ -65,9 +65,9 @@ struct MusicScoreLoader {
             do {
                 let musicScore = try MusicXMLDecoder.decode(type: ScoreModel.self, from: url)
                 if (musicScore.movementTitle != nil) {
-                    viewModel.checkSavedScores(fileURL: url, Title: (musicScore.movementTitle) ?? "null", Author:  (musicScore.identification?.creator) ?? "null")
+                    viewModel.checkSavedScores(fileURL: url, Title: (musicScore.movementTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
                 } else {
-                    viewModel.checkSavedScores(fileURL: url, Title: (musicScore.work?.workTitle) ?? "null", Author:  (musicScore.identification?.creator) ?? "null")
+                    viewModel.checkSavedScores(fileURL: url, Title: (musicScore.work?.workTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
                 }
             } catch {
                 print(error.localizedDescription)
