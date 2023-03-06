@@ -88,15 +88,16 @@ class ScoreStore: ObservableObject {
         }
     }
     
-    func checkSavedScores(fileURL : URL, Title : String, Author: String){
+    func checkSavedScores(fileURL : URL, Title : String, Author: String) -> Bool{
         for Score in scores{
             if (Score.path! == fileURL){
                 print("ERROR: FILE ALREADY SAVED")
-                return
+                return true
             }
         }
         print("New file found: let me add it.")
         addItem(fileURL: fileURL, Title: Title, Author: Author)
+        return false
     }
     
     func deleteScore(Score: Score) {

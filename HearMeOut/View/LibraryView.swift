@@ -12,6 +12,7 @@ import XMLCoder
 
 struct LibraryView: View {
     @State private var openFile = false
+    @State var showingAlert = false
     @State var url: URL?
     @StateObject private var viewModel = ScoreStore()
     @State private var selectedFile: IdentifiedURL?
@@ -38,19 +39,21 @@ struct LibraryView: View {
                 }
             }
         }
-        
+        .alert("Attention: you have already added this file", isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) { }
+        }
         .searchable(text: $viewModel.searchText, prompt: "Songs, Composer...")
         .fileImporter(isPresented: $openFile, allowedContentTypes: [UTType(filenameExtension: "musicxml")!]) { (res) in
             do {
                 let fileUrl = try res.get()
-                MusicScoreLoader().loadMusicScore(url: fileUrl, viewModel: viewModel)
+                showingAlert = MusicScoreLoader().loadMusicScore(url: fileUrl, viewModel: viewModel)
             } catch {
                 print ("error reading")
                 print (error.localizedDescription)
             }
         }
         .onOpenURL{ url in
-            MusicScoreLoader().loadMusicScore(url: url, viewModel: viewModel)
+            _ = MusicScoreLoader().loadMusicScore(url: url, viewModel: viewModel)
             self.url = url
         }
     }
@@ -59,21 +62,23 @@ struct LibraryView: View {
 
 struct MusicScoreLoader {
     
-    func loadMusicScore(url: URL, viewModel: ScoreStore) {
+    func loadMusicScore(url: URL, viewModel: ScoreStore) -> Bool{
+        var showingAlert : Bool = false
         do {
-            guard url.startAccessingSecurityScopedResource() else { return }
+            guard url.startAccessingSecurityScopedResource() else { return false }
             do {
                 let musicScore = try MusicXMLDecoder.decode(type: ScoreModel.self, from: url)
                 if (musicScore.movementTitle != nil) {
-                    viewModel.checkSavedScores(fileURL: url, Title: (musicScore.movementTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
+                    showingAlert = viewModel.checkSavedScores(fileURL: url, Title: (musicScore.movementTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
                 } else {
-                    viewModel.checkSavedScores(fileURL: url, Title: (musicScore.work?.workTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
+                    showingAlert = viewModel.checkSavedScores(fileURL: url, Title: (musicScore.work?.workTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
                 }
             } catch {
                 print(error.localizedDescription)
             }
             url.stopAccessingSecurityScopedResource()
         }
+        return showingAlert
     }
 }
 
