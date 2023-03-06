@@ -16,6 +16,7 @@ enum FocusModel: Hashable {
 struct ScoreView: View {
     @State var isNavigated: Bool = false
     @State var isActive: Bool = false
+    @State var reproduce: Bool = false
     @StateObject private var vm: ScoreViewModel
     @State private var clef: [ClefScore] = []
     @State private var beatType: BeatType = .none
@@ -33,80 +34,85 @@ struct ScoreView: View {
             contentLayer
                 .padding(.bottom, 40)
             Spacer()
-            HStack(spacing: 180) {
+            HStack(spacing: 140) {
                 Button {
                     isActive.toggle()
                 } label: {
                     Text("Voice")
-                        .foregroundColor(.black)
-                        .background(
-                    Capsule()
-                        .stroke(Color.gray, lineWidth: 2)
-                        .frame(width: 110, height: 50))
-
                 }
+                .tint(.indigo)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                
                 Button {
                     isActive.toggle()
                 } label: {
                     Text("Sound")
-                        .foregroundColor(.black)
-                        .background(
-                    Capsule()
-                        .stroke(Color.gray, lineWidth: 2)
-                        .frame(width: 110, height: 50))
-
+                    
                 }
+                .buttonStyle(.borderedProminent)
+                .tint(.indigo)
+                .controlSize(.large)
             }
             ZStack {
                 Capsule()
-                    .foregroundColor(Color("Backgroundcolor2"))
-                    .frame(width: 400, height: 130)
+                    .foregroundColor(.indigo)
+                    .shadow(radius: 10)
+                    .frame(width: 380, height: 130)
                     .padding()
                 HStack(spacing: 30) {
                     Button {
                         vm.goPrevious()
                     } label: {
                         Capsule()
-                            .foregroundColor(.white)
+                            .foregroundColor(.white.opacity(0.8))
                             .frame(width: 100, height: 50)
                             .overlay {
-                                Text("Previews")
+                                Text("Previous")
                                     .foregroundColor(.black)
                             }
+                        
                     }
                     Button {
-                        
+                        reproduce.toggle()
                     } label: {
                         Circle()
                             .frame(width: 80)
-                            .foregroundColor(.white)
+                            .foregroundColor(.white.opacity(0.8))
                             .overlay {
                                 Image(systemName: "play.fill")
+                                    .scaleEffect(reproduce ? 1 : 0)
                                     .font(.system(size: 50))
                                     .foregroundColor(.black)
-
+                                
+                                Image(systemName: "pause.fill")
+                                    .scaleEffect(reproduce ? 0 : 1)
+                                    .font(.system(size: 50))
+                                    .foregroundColor(.black)
                             }
                     }
-
+                    
                     Button {
                         vm.goNext()
                     } label: {
                         Capsule()
-                            .foregroundColor(.white)
+                            .foregroundColor(.white.opacity(0.8))
                             .frame(width: 100, height: 50)
                             .overlay {
                                 Text("Next")
                                     .foregroundColor(.black)
                             }
                     }
-
-
+                    
+                    
                 }
-
+                
+                
             }
-    
-        
-//    Spacer()
+            
+            
+            
+            //    Spacer()
         }
         .navigationTitle("Piano Sonta N.17")
         .toolbar {
@@ -114,11 +120,12 @@ struct ScoreView: View {
                 isNavigated.toggle()
             } label: {
                 Text("Settings")
+                    .foregroundColor(.indigo)
             }
-
+            
         }
         .sheet(isPresented: $isNavigated) {
-           SettingsView()
+            SettingsView()
         }
         .onChange(of: vm.measureIndex) { measure in
             if let score = vm.musicScore {
@@ -143,9 +150,9 @@ struct ScoreView: View {
                     }
                 }
             }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                focus = focusArray[0]
-//            }
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            //                focus = focusArray[0]
+            //            }
         }
     }
     
@@ -161,17 +168,17 @@ struct ScoreView: View {
                         Image(clef[index].sign.rawValue)
                             .resizable()
                             .frame(width: 50, height: 80)
-//                            .accessibilityFocused($focus, equals: focusArray[0])
+                        //                            .accessibilityFocused($focus, equals: focusArray[0])
                             .accessibility(sortPriority: 2)
-             
+                        
                     }
                     
                     if beatType != .none {
                         beatTypeView(beatType)
-                            
+                        
                             .accessibility(sortPriority: 1)
                     }
-   
+                    
                     //di ogni pentagramma
                     VStack(alignment: .leading, spacing: 10) {
                         //cicla per tutte le voci (gruppi) e crea le note/accordi
@@ -180,6 +187,8 @@ struct ScoreView: View {
                                 ForEach(group.note, id: \.self) { notes in
                                     
                                     PitchView(notes: notes)
+//                                        .foregroundColor(.white)
+                                        .font(.headline)
                                         .accessibility(sortPriority: 0)
                                     
                                 }
@@ -191,9 +200,9 @@ struct ScoreView: View {
                 .accessibilityElement(children: .contain)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .frame(height: 150)
-                .background(.gray.opacity(0.6))
-                .cornerRadius(5)
-//                .shadow(color: .gray , radius: 10, y: 10)
+                .background(.white)
+                .cornerRadius(10)
+                .shadow(color: .gray , radius: 5)
                 .padding(.horizontal)
             }
         }
@@ -247,7 +256,7 @@ struct MyContent: View {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(Color("Backgroundcolor"))
                     .frame(width: 380, height: 100))
-                    .padding(.bottom, 20)
+            .padding(.bottom, 20)
         }
     }
 }
