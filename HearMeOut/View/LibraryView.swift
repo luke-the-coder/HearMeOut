@@ -59,9 +59,7 @@ struct LibraryView: View {
     }
 }
 
-
 struct MusicScoreLoader {
-    
     func loadMusicScore(url: URL, viewModel: ScoreStore) -> Bool{
         var showingAlert : Bool = false
         do {
@@ -93,26 +91,17 @@ struct IdentifiedURL: Identifiable {
     var url: URL
 }
 
-
-
 private struct ScoreRowView: View {
     let score: Score
     var body: some View {
         HStack(spacing: 16){
-                Image(systemName: "music.note.list").font(.system(size: 35.0)).foregroundColor(.accentColor)
+            Image(systemName: "music.note.list").font(.system(size: 35.0)).foregroundColor(.accentColor)
                 VStack(alignment: .leading){
                     Text(score.movementTitle ?? "No title").bold()
                     Text(score.composer ?? "")
-//                    Text("---- DEBUG LINE ----")
-//
-//                    Text("\(score)")
-//
-//                    Text("---- DEBUG LINE ----")
                     Spacer()
-
                 }
             }
             Spacer()
-
     }
 }

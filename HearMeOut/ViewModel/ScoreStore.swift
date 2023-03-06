@@ -29,9 +29,9 @@ class ScoreStore: ObservableObject {
             do {
                 let musicScore = try MusicXMLDecoder.decode(type: ScoreModel.self, from: fileUrl)
                 if (musicScore.movementTitle != nil) {
-                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.movementTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
+                    _ = checkSavedScores(fileURL: fileUrl, Title: (musicScore.movementTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
                 } else {
-                    checkSavedScores(fileURL: fileUrl, Title: (musicScore.work?.workTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
+                    _ = checkSavedScores(fileURL: fileUrl, Title: (musicScore.work?.workTitle) ?? "Unkown title", Author:  (musicScore.identification?.creator) ?? "Unkown author")
                 }
                 firstLoad = true
             } catch {

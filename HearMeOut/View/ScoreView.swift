@@ -24,6 +24,7 @@ struct ScoreView: View {
     @AccessibilityFocusState var focus: FocusModel?
     @State private var indexStaff: Int = 0
     
+    let scoreData : Score
     private let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -35,6 +36,7 @@ struct ScoreView: View {
     
     init(url: URL) {
         self._vm = StateObject(wrappedValue: ScoreViewModel(url: url))
+        self.scoreData = ScoreStore().retrieveScore(path: url)
     }
     
     
@@ -71,7 +73,7 @@ struct ScoreView: View {
             
             PreviewsNextButton(vm: vm)
         }
-        .navigationTitle("Piano Sonta N.17")
+        .navigationTitle(scoreData.movementTitle ?? "Musical Score")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button {
