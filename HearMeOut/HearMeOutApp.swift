@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct MC3App: App {
+struct HearMeOutApp: App {
     var body: some Scene {
         WindowGroup {
             LibraryView()
