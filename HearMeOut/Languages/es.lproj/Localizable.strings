@@ -1,20 +1,24 @@
-"Add" = "Agregar";
+"Add" = "Añadir";
 
 "BPM" = "BPM";
 
-"Choose a staff" = "Seleccionar un pentagrama";
+"Choose a staff" = "Seleccionar un instrumento";
 
 "Choose a tempo" = "Seleccionar un tempo";
 
-"Done" = "Listo";
+"Done" = "Hecho";
 
-"Metronomo" = "Metrónomo";
+"Cancel" = "Cancelar";
+
+"Metronomo" = "Metronomo";
 
 "Reading by" = "Lectura por";
 
-"Settings" = "Configuraciones";
+"Reproduce by" = "Reproducción por";
 
-"Songs, Composer..." = "Canciones, Compositor...";
+"Settings" = "Configuración";
+
+"Songs, Composer..." = "Canciones, Compositores...";
 
 "Bar" = "Compás";
 
@@ -22,12 +26,18 @@
 
 "All" = "Partitura completa";
 
-"Beat" = "Pulso";
+"Single note" = "Nota individual";
 
-"Select staff" = "Seleccionar pentagrama";
+"Beat" = "Tiempo";
 
-"Staff 1" = "Primer pentagrama";
+"Select staff" = "Seleccionar instrumento";
 
-"Staff 2" = "Segundo pentagrama";
+"Staff 1" = "Instrumento 1";
 
-"Staff 3" = "Tercer pentagrama";
+"Staff 2" = "Instrumento 2";
+
+"Scores" = "Partituras";
+
+"Next" = "Siguiente";
+
+"Previous" = "Anterior";

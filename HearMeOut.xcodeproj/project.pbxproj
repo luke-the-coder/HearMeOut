@@ -64,6 +64,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E1FE99F29B5F833003AD0D8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Languages/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0E1FE9A029B5F885003AD0D8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Languages/de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0E1FE9A129B5F8D5003AD0D8 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "Languages/pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0E1FE9A229B5F929003AD0D8 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Languages/nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0E1FE9A329B5F94F003AD0D8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Languages/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0E1FE9A429B5FA21003AD0D8 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = Languages/pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0E1FE9A529B5FA6C003AD0D8 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = Languages/el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0E1FE9A629B5FAF7003AD0D8 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = Languages/ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0E1FE9A729B5FBE6003AD0D8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Languages/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0E1FE9A829B5FC74003AD0D8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = Languages/da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0E1FE9A929B5FC7B003AD0D8 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = Languages/fi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0E7F161229ACC0D70067AEA2 /* YDP-GrandPiano-20160804.sf2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "YDP-GrandPiano-20160804.sf2"; sourceTree = "<group>"; };
 		0E7F161629ACC1B70067AEA2 /* ScaleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleModel.swift; sourceTree = "<group>"; };
 		0E7F163629ACC2600067AEA2 /* ParserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserManager.swift; sourceTree = "<group>"; };
@@ -343,6 +354,17 @@
 				it,
 				fa,
 				es,
+				fr,
+				de,
+				"pt-PT",
+				nl,
+				ru,
+				pl,
+				el,
+				ro,
+				"zh-Hans",
+				da,
+				fi,
 			);
 			mainGroup = 0EDCD069299A4EF100E4AF25;
 			packageReferences = (
@@ -438,6 +460,17 @@
 				0ED9F84829ADF42D0042BCFC /* en */,
 				0ED9F84C29ADF76A0042BCFC /* es */,
 				7D71C20829B1EF020088BA8E /* it */,
+				0E1FE99F29B5F833003AD0D8 /* fr */,
+				0E1FE9A029B5F885003AD0D8 /* de */,
+				0E1FE9A129B5F8D5003AD0D8 /* pt-PT */,
+				0E1FE9A229B5F929003AD0D8 /* nl */,
+				0E1FE9A329B5F94F003AD0D8 /* ru */,
+				0E1FE9A429B5FA21003AD0D8 /* pl */,
+				0E1FE9A529B5FA6C003AD0D8 /* el */,
+				0E1FE9A629B5FAF7003AD0D8 /* ro */,
+				0E1FE9A729B5FBE6003AD0D8 /* zh-Hans */,
+				0E1FE9A829B5FC74003AD0D8 /* da */,
+				0E1FE9A929B5FC7B003AD0D8 /* fi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
