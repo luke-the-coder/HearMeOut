@@ -10,6 +10,10 @@ import Foundation
 class WorkScore: ParserBase {
     var workTitle: String = ""
     
+    init(workTitle: String = "") {
+        self.workTitle = workTitle
+    }
+    
     private func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
 
 //            print("processing <\(elementName)> tag from WorkScore")

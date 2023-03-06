@@ -9,12 +9,13 @@ import SwiftUI
 
 
 struct SettingsView: View {
+    @ObservedObject var scoreViewModel: ScoreViewModel
     @State private var done: Bool = false
-    @State private var toggleDictionary: [String: Bool] = ["Staff 1": false, "Staff 2": false, "Staff 3": false]
-    @State private var selectedIndex = ""
+//    @State private var toggleDictionary: [String: Bool] = ["Staff 1": false, "Staff 2": false, "Staff 3": false]
+    @State private var selectedIndex: String? = nil
     private var pickerArray2 = ["4/4", "3/4", "2/4", "1/4"]
-    @State private var selectedIndex2 = ""
-    @State var currentSelection: Division = .all
+    @State private var selectedIndex2: String
+    
     @State private var showView = true
     @State var count: Int
     @StateObject var vm2 = Metronome()
@@ -23,27 +24,39 @@ struct SettingsView: View {
     let countMin: Int = 40
     let countMax: Int = 120
     
-    init() {
+    init(scoreViewModel: ScoreViewModel) {
+        self.scoreViewModel = scoreViewModel
         self._count = State(initialValue: countMin)
-        
+        self._selectedIndex2 = State(initialValue: pickerArray2[0])
     }
     
     var body: some View {
         NavigationStack {
             List {
                 Section("Reading by") {
-                    ForEach(Division.allCases, id: \.rawValue) { division in
-                        Content(currentSelection: currentSelection, division: division)
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                currentSelection = division
-                            }
+                    ForEach(DivisionRead.allCases, id: \.rawValue) { division in
+                        DivisionView(currentSelection: $scoreViewModel.divisionRead, division: division)
+//                            .contentShape(Rectangle())c
+//                            .onTapGesture {
+//                                scoreViewModel.divisionRead = division
+//                            }
                     }
                 }
+                
+                Section("Reproduce by") {
+                    ForEach(DivisionPlay.allCases, id: \.rawValue) { division in
+                        DivisionView(currentSelection: $scoreViewModel.divisionPlay, division: division)
+//                            .contentShape(Rectangle())
+//                            .onTapGesture {
+//                                scoreViewModel.divisionPlay = division
+//                            }
+                    }
+                }
+                
                 Section("Select staff")
                 {
-                    ForEach(allKeys, id: \.self) { key in
-                        Toggle(key, isOn: binding(for: key))
+                    ForEach($scoreViewModel.staffDictionary) { $staf in
+                        Toggle(staf.name, isOn: $staf.isActive)
                     }
                     
                 }
@@ -138,56 +151,36 @@ struct SettingsView: View {
                 }
             }
         }
+        .interactiveDismissDisabled()
         
     }
     
-    private var allKeys: [String] {
-        return toggleDictionary.keys.sorted().map { String($0)
-        }
-    }
-    
-    
-    private func binding(for key: String) -> Binding<Bool> {
-        return Binding(get: {
-            return self.toggleDictionary[key] ?? false
-        }, set: {
-            self.toggleDictionary[key] = $0
-        })
-    }
+//    private var allKeys: [String] {
+//        return scoreViewModel.staffDictionary.keys.sorted().map { String($0)
+//        }
+//    }
+//
+//
+//    private func binding(for key: String) -> Binding<Bool> {
+//        return Binding(get: {
+//            return scoreViewModel.staffDictionary[key] ?? false
+//        }, set: {
+//            scoreViewModel.staffDictionary[key] = $0
+//        })
+//    }
 }
 
-enum Division: String, CaseIterable {
-    case bar = "Bar"
-    case line = "Line"
-    case all = "All"
-}
+
 
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        //        Content(currentSelection: .all, division: .all)
         NavigationStack {
-            SettingsView()
+            SettingsView(scoreViewModel: ScoreViewModel(url: Bundle.main.url(forResource: "Chant" , withExtension: "musicxml")!))
         }
         
     }
 }
 
 
-struct Content: View {
-    let currentSelection: Division
-    let division: Division
-    var body: some View {
-        HStack {
-            Text(LocalizedStringKey(division.rawValue))
-            Spacer()
-//            Text(division.rawValue).accessibilityLabel("\(division.rawValue) \(division == currentSelection ? "is on" : "is off")")
-            Spacer()
-            Image(systemName: "checkmark")
-                .opacity(division == currentSelection ? 1.0 : 0.0)
-                .accessibilityHidden(true)
-                
-        }
-    }
-    
-}
+

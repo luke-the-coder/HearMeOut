@@ -10,6 +10,10 @@ import Foundation
 class PartScore: ParserBase {
     var measure: [MeasureScore] = []
     
+    init(measure: [MeasureScore] = []) {
+        self.measure = measure
+    }
+    
     internal override func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
 
 //            print("processing <\(elementName)> tag from PartScore")

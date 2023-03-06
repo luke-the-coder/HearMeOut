@@ -24,6 +24,12 @@ class MeasureScore: ParserBase, Identifiable {
     
     var staffGroup: [StaffGroup] = []
     
+    init(id: Int = 0, attributes: AttributeScore = AttributeScore(), staffGroup: [StaffGroup] = []) {
+        self.id = id
+        self.attributes = attributes
+        self.staffGroup = staffGroup
+    }
+    
     private func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
         print("processing <\(elementName)> tag from MeasureScore")

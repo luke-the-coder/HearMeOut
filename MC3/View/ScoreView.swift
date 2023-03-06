@@ -14,121 +14,75 @@ enum FocusModel: Hashable {
 }
 
 struct ScoreView: View {
-    @State var isNavigated: Bool = false
-    @State var isActive: Bool = false
-    @State var reproduce: Bool = false
+    @State private var isNavigated: Bool = false
+    @State private var isActive: Bool = false
     @StateObject private var vm: ScoreViewModel
     @State private var clef: [ClefScore] = []
     @State private var beatType: BeatType = .none
     @State private var focusArray: [FocusModel] = [FocusModel.note(id: 0), FocusModel.note(id: 1)]
+    @State private var array: [String] = ["uno", "due"]
     @AccessibilityFocusState var focus: FocusModel?
-    let scoreData : Score
+    @State private var indexStaff: Int = 0
+    
+    private let columns: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+    ]
     
     init(url: URL) {
         self._vm = StateObject(wrappedValue: ScoreViewModel(url: url))
-        self.scoreData = ScoreStore().retrieveScore(path: url)
- 
     }
+    
     
     var body: some View {
         VStack{
             contentLayer
                 .padding(.bottom, 40)
             Spacer()
-            HStack(spacing: 140) {
-                Button {
-                    isActive.toggle()
-                } label: {
-                    Text("Voice")
-                }
-                .tint(.indigo)
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                
-                Button {
-                    isActive.toggle()
-                } label: {
-                    Text("Sound")
-                    
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.indigo)
-                .controlSize(.large)
-            }
-            ZStack {
-                Capsule()
-                    .foregroundColor(.indigo)
-                    .shadow(radius: 10)
-                    .frame(width: 380, height: 130)
-                    .padding()
-                HStack(spacing: 30) {
-                    Button {
-                        vm.goPrevious()
-                    } label: {
-                        Capsule()
-                            .foregroundColor(.white.opacity(0.8))
-                            .frame(width: 100, height: 50)
-                            .overlay {
-                                Text("Previous")
-                                    .foregroundColor(.black)
-                            }
-                        
-                    }
-                    Button {
-                        reproduce.toggle()
-                    } label: {
-                        Circle()
-                            .frame(width: 80)
-                            .foregroundColor(.white.opacity(0.8))
-                            .overlay {
-                                Image(systemName: "play.fill")
-                                    .scaleEffect(reproduce ? 1 : 0)
-                                    .font(.system(size: 50))
-                                    .foregroundColor(.black)
-                                
-                                Image(systemName: "pause.fill")
-                                    .scaleEffect(reproduce ? 0 : 1)
-                                    .font(.system(size: 50))
-                                    .foregroundColor(.black)
-                            }
-                    }
-                    
-                    Button {
-                        vm.goNext()
-                    } label: {
-                        Capsule()
-                            .foregroundColor(.white.opacity(0.8))
-                            .frame(width: 100, height: 50)
-                            .overlay {
-                                Text("Next")
-                                    .foregroundColor(.black)
-                            }
-                    }
-                    
-                    
-                }
-                
-                
+            HStack(spacing: 180) {
+//                Button {
+//                    isActive.toggle()
+//                } label: {
+//                    Text("Voice")
+//                        .foregroundColor(.black)
+//                        .background(
+//                    Capsule()
+//                        .stroke(Color.gray, lineWidth: 2)
+//                        .frame(width: 110, height: 50))
+//
+//                }
+//                Button {
+//                    isActive.toggle()
+//                    vm.createMidi(measureStart: 98, measureEnd: 102, bpm: 60)
+//                } label: {
+//                    Text("Sound")
+//                        .foregroundColor(.black)
+//                        .background(
+//                    Capsule()
+//                        .stroke(Color.gray, lineWidth: 2)
+//                        .frame(width: 110, height: 50))
+//
+//                }
             }
             
-            
-            
-            //    Spacer()
+            PreviewsNextButton(vm: vm)
         }
-        .navigationTitle(scoreData.movementTitle ?? "Musical Score")
-        
-
+        .navigationTitle("Piano Sonta N.17")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button {
                 isNavigated.toggle()
             } label: {
                 Text("Settings")
-                    .foregroundColor(.indigo)
             }
-            
+
         }
         .sheet(isPresented: $isNavigated) {
-            SettingsView()
+            SettingsView(scoreViewModel: vm)
         }
         .onChange(of: vm.measureIndex) { measure in
             if let score = vm.musicScore {
@@ -153,9 +107,9 @@ struct ScoreView: View {
                     }
                 }
             }
-            //            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            //                focus = focusArray[0]
-            //            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                focus = focusArray[0]
+//            }
         }
     }
     
@@ -168,44 +122,64 @@ struct ScoreView: View {
                 HStack {
                     
                     if !clef.isEmpty {
-                        Image(clef[index].sign.rawValue)
-                            .resizable()
-                            .frame(width: 50, height: 80)
-                        //                            .accessibilityFocused($focus, equals: focusArray[0])
-                            .accessibility(sortPriority: 2)
+                        if vm.checkStafSelection {
+                            Image(clef[index].sign.rawValue)
+                                .resizable()
+                                .frame(width: 50, height: 80)
+    //                            .accessibilityFocused($focus, equals: focusArray[0])
+                                .accessibility(sortPriority: 2)
+                        } else {
+                            if let index = vm.indexCheckStaffActive {
+                                Image(clef[index].sign.rawValue)
+                                    .resizable()
+                                    .frame(width: 50, height: 80)
+        //                            .accessibilityFocused($focus, equals: focusArray[0])
+                                    .accessibility(sortPriority: 2)
+                            }
+                            
+                        }
                         
                     }
                     
                     if beatType != .none {
                         beatTypeView(beatType)
-                        
                             .accessibility(sortPriority: 1)
                     }
-                    
+   
                     //di ogni pentagramma
                     VStack(alignment: .leading, spacing: 10) {
                         //cicla per tutte le voci (gruppi) e crea le note/accordi
                         ForEach(staff.group) { group in
-                            HStack(spacing: 20) {
+//                            HStack(spacing: 20) {
+                            LazyVGrid(columns: columns, alignment: .center, spacing: nil) {
                                 ForEach(group.note, id: \.self) { notes in
-                                    
                                     PitchView(notes: notes)
-//                                        .foregroundColor(.white)
-                                        .font(.headline)
                                         .accessibility(sortPriority: 0)
+                                        
                                     
                                 }
                             }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding([.vertical, .trailing])
+                                
+//                            }
                             //                        .accessibilityElement(children: .combine)
                         }
                     }
                 }
-                .accessibilityElement(children: .contain)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .frame(height: 150)
-                .background(.white)
-                .cornerRadius(10)
-                .shadow(color: .gray , radius: 5)
+//                .accessibility(addTraits: .notEnabled)
+                .accessibilityChildren {
+                    Text(vm.accessibilityString[index])
+                        .accessibility(hidden: vm.isPlaying ? true : false)
+                        
+                }
+                
+//                .accessibilityElement(children: .contain)
+//                .frame(maxWidth: .infinity, alignment: .leading)
+//                .frame(width: 800, height: 150)
+                .background(.gray.opacity(0.7))
+                .cornerRadius(5)
+//                .shadow(color: .gray , radius: 10, y: 10)
                 .padding(.horizontal)
             }
         }
@@ -259,7 +233,7 @@ struct MyContent: View {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(Color("Backgroundcolor"))
                     .frame(width: 380, height: 100))
-            .padding(.bottom, 20)
+                    .padding(.bottom, 20)
         }
     }
 }

@@ -12,6 +12,12 @@ class ClefScore: ParserBase, Identifiable {
     var sign: ClefSign = .none
     var line: Int = 0
     
+    init(id: Int = 0, sign: ClefSign = .none, line: Int = 0) {
+        self.id = id
+        self.sign = sign
+        self.line = line
+    }
+    
     private func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
 //        print("processing <\(elementName)> tag from ClefScore")

@@ -9,10 +9,18 @@ import Foundation
 
 class AttributeScore: ParserBase {
     var divisions: Int = 0
-    var staves: Int = 0
+    var staves: Int = 1
     var key: KeyScore = KeyScore()
     var time: TimeScore = TimeScore()
     var clef: [ClefScore] = []
+    
+    init(divisions: Int = 0, staves: Int = 1, key: KeyScore = KeyScore(), time: TimeScore = TimeScore(), clef: [ClefScore] = []) {
+        self.divisions = divisions
+        self.staves = staves
+        self.key = key
+        self.time = time
+        self.clef = clef
+    }
     
     
     private func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {

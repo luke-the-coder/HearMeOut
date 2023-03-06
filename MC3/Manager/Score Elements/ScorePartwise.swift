@@ -13,6 +13,12 @@ class ScorePartwise: ParserBase {
     var work = WorkScore()
     var part = PartScore()
     
+    init(version: Double = 0.0, work: WorkScore = WorkScore(), part: PartScore = PartScore()) {
+        self.version = version
+        self.work = work
+        self.part = part
+    }
+    
     internal override func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
 //        print("processing <\(elementName)> tag from ScorePartwise")

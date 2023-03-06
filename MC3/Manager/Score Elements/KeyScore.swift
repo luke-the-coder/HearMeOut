@@ -10,6 +10,10 @@ import Foundation
 class KeyScore: ParserBase {
     var fifths: Int = 0
     
+    init(fifths: Int = 0) {
+        self.fifths = fifths
+    }
+    
     private func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
 //        print("processing <\(elementName)> tag from KeyScore")

@@ -14,6 +14,10 @@ class TimeScore: ParserBase {
     private var numerator: Int = 1
     private var denominator: Int = 4
     
+    init(beatType: BeatType = .none) {
+        self.beatType = beatType
+    }
+    
     private func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
 //        print("processing <\(elementName)> tag from TimeScore")

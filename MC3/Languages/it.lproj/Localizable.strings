@@ -10,7 +10,9 @@
 
 "Metronomo" = "Metronomo";
 
-"Reading by" = "Riproduci per";
+"Reading by" = "Lettura per";
+
+"Reproduce by" = "Riproduzione per";
 
 "Settings" = "Impostazioni";
 
@@ -21,6 +23,8 @@
 "Line" = "Linea";
 
 "All" = "Intero Spartito";
+
+"Single note" = "Nota singola";
 
 "Beat" = "Tempo";
 
