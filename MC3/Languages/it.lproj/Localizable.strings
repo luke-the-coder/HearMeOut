@@ -8,6 +8,8 @@
 
 "Done" = "Fatto";
 
+"Cancel" = "Cancella";
+
 "Metronomo" = "Metronomo";
 
 "Reading by" = "Lettura per";
@@ -34,4 +36,8 @@
 
 "Staff 2" = "Secondo pentagramma";
 
-"Staff 3" = "Terzo pentagramma";
+"Scores" = "Spartiti";
+
+"Next" = "Prossimo";
+
+"Previous" = "Precedente";

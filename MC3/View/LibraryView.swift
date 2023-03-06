@@ -29,7 +29,7 @@ struct LibraryView: View {
                         }
                     }
                     .onDelete(perform: viewModel.deleteItems)
-                }.navigationTitle("Music Reader").toolbar{
+                }.navigationTitle("Scores").toolbar{
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Add") {
                             self.openFile.toggle()

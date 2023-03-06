@@ -189,7 +189,7 @@ class ScoreViewModel: ObservableObject {
         guard let measure = originalScore.part.measure.first else { return }
         
         for staves in 0..<measure.attributes.staves {
-            let staffRow = StaffSettingModel(name: "Staf \(staves + 1)")
+            let staffRow = StaffSettingModel(name: NSLocalizedString("Staff \(staves + 1)", comment: "Staff"))
             staffDictionary.append(staffRow)
         }
     }
