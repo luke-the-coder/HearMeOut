@@ -93,7 +93,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     }
     
     
-    func stopRecording(){
+    func stopRecording(folderName: String){
         
         audioRecorder.stop()
         
@@ -103,15 +103,17 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
         
         timerCount!.invalidate()
 //        blinkingCount!.invalidate()
-        
+        fetchAllRecording(folderName: folderName)
     }
     
     
     func fetchAllRecording(folderName: String) {
+        
+        createFolderIfNeeded(folderName: folderName)
     
         guard let path = getUrlForFolder(folderName: folderName) else { return }
             let directoryContents = try! FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil)
-    
+    recordingsList = []
             for i in directoryContents {
                 recordingsList.append(Recording(fileURL : i, createdAt:getFileDate(for: i), isPlaying: false))
             }

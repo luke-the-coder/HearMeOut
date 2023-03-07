@@ -14,28 +14,47 @@ struct RecordingButtonView: View {
 let fileName: String
     
     var body: some View {
-        VStack {
-         
+        ZStack(alignment: .bottom) {
+            Color(uiColor: .systemGray5)
+                .ignoresSafeArea()
             
-            if audioPlayer.isRecording == false {
-                Button(action: {self.audioPlayer.startRecording(folderName: fileName, recordeName: UUID().uuidString)}) {
-                    Image(systemName: "circle.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 50, height: 50)
-                        .padding(.bottom, 40)
+//            VStack {
+            HStack(alignment: .center, spacing: 40) {
+                    if audioPlayer.isRecording == false {
+                        Button {
+                            audioPlayer.startRecording(folderName: fileName, recordeName: UUID().uuidString)
+                        } label: {
+                            Image(systemName: "mic.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 40, height: 40)
+                                .accessibilityLabel("Start recording")
+                        }
+                    } else {
+                        Button {
+                            audioPlayer.stopRecording(folderName: fileName)
+                        } label: {
+                            Image(systemName: "stop.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 40, height: 40)
+                                .accessibilityLabel("Stop recording")
+                        }
+                    }
+                    
+                    Text(audioPlayer.timer)
+                        .font(.largeTitle)
+                        .foregroundColor(.blue)
+                        .accessibilityLabel("Recording time \(audioPlayer.timer)")
+                    
                 }
-            } else {
-                Button(action: {self.audioPlayer.stopRecording()}) {
-                    Image(systemName: "stop.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 50, height: 50)
-                        .padding(.bottom, 40)
-                }
-            }
+                .padding(.bottom, 40)
+                
+//            }
+            
         }
-
+        
+        
     }
 }
 

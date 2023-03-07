@@ -12,7 +12,7 @@ class ScoreStore: ObservableObject {
     @Published var scores: [Score] = []
     @Published var searchText = ""
     @AppStorage("firstLoad") var firstLoad: Bool = false
-    let scoreItems: [String] = ["MozartPianoSonata","BrookeWestSample","BrahWiMeSample","MozaChloSample","Chant", "Echigo-Jishi"]
+    let scoreItems: [String] = ["MozartPianoSonata","BrahWiMeSample","MozaChloSample","Chant", "Echigo-Jishi"]
     
     init() {
         if !firstLoad {

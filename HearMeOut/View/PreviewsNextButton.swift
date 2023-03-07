@@ -58,7 +58,7 @@ struct PreviewsNextButton: View {
                     Capsule()
                         .stroke(.blue , lineWidth: 2)
                         .foregroundColor(Color(uiColor: .systemGray3))
-                       .shadow(radius: 10)
+                       .shadow(radius: 5)
                         .frame(width: 100, height: 50)
                         
                         .overlay {

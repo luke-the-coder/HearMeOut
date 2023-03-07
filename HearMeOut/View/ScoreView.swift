@@ -47,18 +47,26 @@ struct ScoreView: View {
         VStack{
             contentLayer
                 .padding(.bottom, 40)
+                .padding(.top, 40)
             Spacer()
             Button {
                 showRecording.toggle()
             } label: {
                 Capsule()
+                    .stroke(lineWidth: 2)
                     .foregroundColor(.blue)
-                    .frame(width: 50, height: 30)
+                    .frame(width: 200, height: 30)
                     .overlay {
-                        Text("Recording Audio")
+                        Text("Your recordings")
                     }
+                    .background(
+                        Color(uiColor: .systemGray5)
+                            .clipShape(Capsule())
+                    )
                 
-            }.sheet(isPresented: $showRecording) {
+            }
+            .padding(.bottom, 60)
+            .sheet(isPresented: $showRecording) {
                 RecordingView(fileName: fileName)
             }
 

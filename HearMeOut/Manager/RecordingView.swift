@@ -20,9 +20,9 @@ struct RecordingView: View {
                         List {
                             ForEach(audioPlayer.recordingsList, id: \.createdAt) { recording in
                                 HStack {
-                                    Text("\(recording.fileURL.lastPathComponent)")
+                                    Text("\(recording.createdAt.formatted(date: .complete, time: .complete))")
+                                    Spacer()
                                     Button {
-                                        
                                         if recording.isPlaying {
                                             audioPlayer.stopPlaying(url: recording.fileURL) }
                                         else {
@@ -41,11 +41,11 @@ struct RecordingView: View {
                         }
                         
                     }
-                    Rectangle()
-                        .ignoresSafeArea()
-                        .frame(height: 130)
+                   
                     
                     RecordingButtonView(audioPlayer: audioPlayer, fileName: fileName)
+                        .frame(height: 130)
+                        .shadow(radius: 10)
                     
                    
                 } .navigationTitle("Recording List")
