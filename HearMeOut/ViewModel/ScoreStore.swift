@@ -59,14 +59,26 @@ class ScoreStore: ObservableObject {
            }
        }
     
-    private func addItem(fileURL : URL, Title : String, Author: String){
-        let newItem = Score(context: PersistenceController.shared.container.viewContext)
-        newItem.timestamp = Date()
-        newItem.path = fileURL
-        newItem.composer = Author
-        newItem.movementTitle = Title
-        newItem.filename = fileURL.deletingPathExtension().lastPathComponent
-        saveChanges()
+    private func addItem(fileURL : URL, Title : String, Author: String) {
+        
+        if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            
+            let newFileURL = directory.appendingPathComponent(Title)
+            
+            do {
+                try FileManager.default.copyItem(at: fileURL, to: newFileURL)
+                let newItem = Score(context: PersistenceController.shared.container.viewContext)
+                newItem.timestamp = Date()
+                newItem.path = newFileURL
+                newItem.composer = Author
+                newItem.movementTitle = Title
+                newItem.filename = fileURL.deletingPathExtension().lastPathComponent
+                saveChanges()
+            } catch {
+                print("addItem \(error.localizedDescription)")
+            }
+        }
+        
     }
     
     func checkDeletedFile(){
@@ -90,7 +102,7 @@ class ScoreStore: ObservableObject {
     
     func checkSavedScores(fileURL : URL, Title : String, Author: String) -> Bool{
         for Score in scores{
-            if (Score.path! == fileURL){
+            if (Score.path! == fileURL) {
                 print("ERROR: FILE ALREADY SAVED")
                 return true
             }
@@ -101,8 +113,20 @@ class ScoreStore: ObservableObject {
     }
     
     func deleteScore(Score: Score) {
-        PersistenceController.shared.container.viewContext.delete(Score)
-        saveChanges()
+        guard let title = Score.movementTitle else { return }
+        if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            
+            let fileURL = directory.appendingPathComponent(title)
+            
+            do {
+                try FileManager.default.removeItem(at: fileURL)
+                PersistenceController.shared.container.viewContext.delete(Score)
+                saveChanges()
+            } catch {
+                print("deleting \(error.localizedDescription)")
+            }
+        }
+        
     }
     
     func deleteItems(offsets: IndexSet) {

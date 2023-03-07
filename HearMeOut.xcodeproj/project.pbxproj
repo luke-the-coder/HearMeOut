@@ -113,8 +113,8 @@
 		0E9F458229B5DE29002AA577 /* MeasureScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureScore.swift; sourceTree = "<group>"; };
 		0E9F458329B5DE29002AA577 /* PitchScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchScore.swift; sourceTree = "<group>"; };
 		0E9F458429B5DE29002AA577 /* AttributeScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeScore.swift; sourceTree = "<group>"; };
-		0E9F459329B5DE87002AA577 /* Full Grand Piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Full Grand Piano.sf2"; sourceTree = "<group>"; };
-		0E9F459529B5DEC2002AA577 /* GeneralUser GS MuseScore v1.442.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralUser GS MuseScore v1.442.sf2"; sourceTree = "<group>"; };
+		0E9F459329B5DE87002AA577 /* Full Grand Piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Full Grand Piano.sf2"; sourceTree = "<group>"; };
+		0E9F459529B5DEC2002AA577 /* GeneralUser GS MuseScore v1.442.sf2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GeneralUser GS MuseScore v1.442.sf2"; sourceTree = "<group>"; };
 		0EAFED9529A8DB6E00EFAD2B /* ScoreStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStore.swift; sourceTree = "<group>"; };
 		0EB092CA29AA2BF00041C330 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		0EB0970E29A7DEC500D3EDD3 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
@@ -621,7 +621,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"HearMeOut/Preview Content\"";
-				DEVELOPMENT_TEAM = 2MD4NXFV5G;
+				DEVELOPMENT_TEAM = 7AGYKJGT3A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HearMeOut/Info.plist;
@@ -654,7 +654,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"HearMeOut/Preview Content\"";
-				DEVELOPMENT_TEAM = 2MD4NXFV5G;
+				DEVELOPMENT_TEAM = 7AGYKJGT3A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HearMeOut/Info.plist;
