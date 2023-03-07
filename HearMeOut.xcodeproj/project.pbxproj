@@ -61,9 +61,8 @@
 		0EDCD07A299A4EF200E4AF25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCD079299A4EF200E4AF25 /* Assets.xcassets */; };
 		0EDCD07D299A4EF200E4AF25 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCD07C299A4EF200E4AF25 /* Preview Assets.xcassets */; };
 		24141F9429B75A6300904ABC /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141F9329B75A6300904ABC /* AudioManager.swift */; };
-		24141F9629B75B7C00904ABC /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141F9529B75B7C00904ABC /* AudioRecorder.swift */; };
-		24141F9829B75BE300904ABC /* RecordingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141F9729B75BE300904ABC /* RecordingModel.swift */; };
 		24141F9F29B7610D00904ABC /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141F9E29B7610D00904ABC /* RecordingView.swift */; };
+		24141FA329B790C400904ABC /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141FA229B790C400904ABC /* Recording.swift */; };
 		246CE21929AE0AC900CF4AA8 /* PitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246CE21829AE0AC900CF4AA8 /* PitchView.swift */; };
 /* End PBXBuildFile section */
 
@@ -136,9 +135,8 @@
 		0EDCD079299A4EF200E4AF25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EDCD07C299A4EF200E4AF25 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		24141F9329B75A6300904ABC /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		24141F9529B75B7C00904ABC /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
-		24141F9729B75BE300904ABC /* RecordingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingModel.swift; sourceTree = "<group>"; };
 		24141F9E29B7610D00904ABC /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
+		24141FA229B790C400904ABC /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		246CE21829AE0AC900CF4AA8 /* PitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchView.swift; sourceTree = "<group>"; };
 		7D71C20829B1EF020088BA8E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Languages/it.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -318,9 +316,8 @@
 			isa = PBXGroup;
 			children = (
 				24141F9329B75A6300904ABC /* AudioManager.swift */,
-				24141F9729B75BE300904ABC /* RecordingModel.swift */,
-				24141F9529B75B7C00904ABC /* AudioRecorder.swift */,
 				24141F9E29B7610D00904ABC /* RecordingView.swift */,
+				24141FA229B790C400904ABC /* Recording.swift */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -444,13 +441,12 @@
 				0E9F458729B5DE29002AA577 /* BeatTypeModel.swift in Sources */,
 				0EB092CB29AA2BF00041C330 /* SettingView.swift in Sources */,
 				24141F9F29B7610D00904ABC /* RecordingView.swift in Sources */,
-				24141F9829B75BE300904ABC /* RecordingModel.swift in Sources */,
 				0E9F457529B5DDD4002AA577 /* StaffSettingModel.swift in Sources */,
+				24141FA329B790C400904ABC /* Recording.swift in Sources */,
 				0E9F458A29B5DE29002AA577 /* BackupScore.swift in Sources */,
 				0EDCD076299A4EF100E4AF25 /* HearMeOutApp.swift in Sources */,
 				0E9F457029B5DD28002AA577 /* DivisionView.swift in Sources */,
 				0E9F456D29B5DCD9002AA577 /* MidiManager.swift in Sources */,
-				24141F9629B75B7C00904ABC /* AudioRecorder.swift in Sources */,
 				0E9F458F29B5DE29002AA577 /* KeyScore.swift in Sources */,
 				0E9F458E29B5DE29002AA577 /* NotationsScore.swift in Sources */,
 				0E9F459129B5DE29002AA577 /* PitchScore.swift in Sources */,

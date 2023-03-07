@@ -17,7 +17,7 @@ class ParserManager {
     func parseFromUrl(url: URL) -> ScorePartwise? {
 //        print("parseFromUrl \(url)")
         // MozartPianoSonata
-        let url: URL = Bundle.main.url(forResource: "MozartPianoSonata" , withExtension: "musicxml")!
+//        let url: URL = Bundle.main.url(forResource: "MozartPianoSonata" , withExtension: "musicxml")!
 //        print("parseFromUrl \(url)")
         do {
             let string = try String(contentsOf: url)
