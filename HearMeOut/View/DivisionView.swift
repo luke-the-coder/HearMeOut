@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-struct DivisionView<current: DivisionProtocol, div: DivisionProtocol>: View {
-    @Binding var currentSelection: current
-    let division: div
+struct DivisionView<T>: View where T: RawRepresentable, T.RawValue == String {
+    @Binding var currentSelection: T
+    let division: T
     var body: some View {
         HStack {
-            Text(LocalizedStringKey(division.rawValue(SomeType: division as! div.SomeType)))
+            Text(LocalizedStringKey(division.rawValue))
             Spacer()
             Image(systemName: "checkmark")
-                .opacity(division.isEqual(to: currentSelection as! div.SomeType) ? 1.0 : 0.0)
+                .opacity(division == currentSelection ? 1.0 : 0.0)
                 .accessibilityHidden(true)
                 .foregroundColor(.blue)
                 
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            currentSelection = division as! current
+            currentSelection = division
         }
     }
     

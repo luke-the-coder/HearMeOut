@@ -179,9 +179,9 @@ struct ScoreView: View {
 //                .accessibilityElement(children: .contain)
 //                .frame(maxWidth: .infinity, alignment: .leading)
 //                .frame(width: 800, height: 150)
-                .background(.gray.opacity(0.7))
+                .background(Color(UIColor.systemGray5))
                 .cornerRadius(5)
-//                .shadow(color: .gray , radius: 10, y: 10)
+//                .shadow(color: Color(UIColor.systemGray5) , radius: 10)
                 .padding(.horizontal)
             }
         }
