@@ -21,7 +21,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     @Published var countSec = 0
     @Published var timerCount : Timer?
-    @Published var blinkingCount : Timer?
+//    @Published var blinkingCount : Timer?
     @Published var timer : String = "0:00"
     //    @Published var toggleColor : Bool = false
     
@@ -102,7 +102,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
         self.countSec = 0
         
         timerCount!.invalidate()
-        blinkingCount!.invalidate()
+//        blinkingCount!.invalidate()
         
     }
     

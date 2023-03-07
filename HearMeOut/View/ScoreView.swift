@@ -23,6 +23,8 @@ struct ScoreView: View {
     @State private var array: [String] = ["uno", "due"]
     @AccessibilityFocusState var focus: FocusModel?
     @State private var indexStaff: Int = 0
+    @State private var showRecording: Bool = false
+    let fileName: String
     
 //    let scoreData : Score
     private let columns: [GridItem] = [
@@ -34,9 +36,10 @@ struct ScoreView: View {
         GridItem(.flexible()),
     ]
     
-    init(url: URL) {
+    init(url: URL, fileName: String) {
         self._vm = StateObject(wrappedValue: ScoreViewModel(url: url))
 //        self.scoreData = ScoreStore().retrieveScore(path: url)
+        self.fileName = fileName
     }
     
     
@@ -45,32 +48,20 @@ struct ScoreView: View {
             contentLayer
                 .padding(.bottom, 40)
             Spacer()
-            HStack(spacing: 180) {
-//                Button {
-//                    isActive.toggle()
-//                } label: {
-//                    Text("Voice")
-//                        .foregroundColor(.black)
-//                        .background(
-//                    Capsule()
-//                        .stroke(Color.gray, lineWidth: 2)
-//                        .frame(width: 110, height: 50))
-//
-//                }
-//                Button {
-//                    isActive.toggle()
-//                    vm.createMidi(measureStart: 98, measureEnd: 102, bpm: 60)
-//                } label: {
-//                    Text("Sound")
-//                        .foregroundColor(.black)
-//                        .background(
-//                    Capsule()
-//                        .stroke(Color.gray, lineWidth: 2)
-//                        .frame(width: 110, height: 50))
-//
-//                }
+            Button {
+                showRecording.toggle()
+            } label: {
+                Capsule()
+                    .foregroundColor(.blue)
+                    .frame(width: 50, height: 30)
+                    .overlay {
+                        Text("Recording Audio")
+                    }
+                
+            }.sheet(isPresented: $showRecording) {
+                RecordingView(fileName: fileName)
             }
-            
+
             PreviewsNextButton(vm: vm)
         }
         .navigationTitle("Musical score")//scoreData.movementTitle ?? "Musical Score")
@@ -210,7 +201,7 @@ struct ScoreView: View {
 struct ScoreView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ScoreView(url: Bundle.main.url(forResource: "MozartPianoSonata" , withExtension: "musicxml")!)
+            ScoreView(url: Bundle.main.url(forResource: "MozartPianoSonata" , withExtension: "musicxml")!, fileName: "")
         }
     }
 }

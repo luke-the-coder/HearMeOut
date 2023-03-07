@@ -33,7 +33,7 @@ struct LibraryView: View {
                 }
             }
             .navigationDestination(for: Score.self){ score in
-                ScoreView(url: score.path!)
+                ScoreView(url: score.path!, fileName: score.filename!)
             }
         }
         .alert("Attention: you have already added this file", isPresented: $showingAlert) {

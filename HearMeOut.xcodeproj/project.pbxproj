@@ -63,6 +63,7 @@
 		24141F9429B75A6300904ABC /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141F9329B75A6300904ABC /* AudioManager.swift */; };
 		24141F9F29B7610D00904ABC /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141F9E29B7610D00904ABC /* RecordingView.swift */; };
 		24141FA329B790C400904ABC /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141FA229B790C400904ABC /* Recording.swift */; };
+		24141FA729B7BEA300904ABC /* RecordingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141FA629B7BEA300904ABC /* RecordingButtonView.swift */; };
 		246CE21929AE0AC900CF4AA8 /* PitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246CE21829AE0AC900CF4AA8 /* PitchView.swift */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +138,7 @@
 		24141F9329B75A6300904ABC /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		24141F9E29B7610D00904ABC /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		24141FA229B790C400904ABC /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		24141FA629B7BEA300904ABC /* RecordingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingButtonView.swift; sourceTree = "<group>"; };
 		246CE21829AE0AC900CF4AA8 /* PitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchView.swift; sourceTree = "<group>"; };
 		7D71C20829B1EF020088BA8E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Languages/it.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -317,6 +319,7 @@
 			children = (
 				24141F9329B75A6300904ABC /* AudioManager.swift */,
 				24141F9E29B7610D00904ABC /* RecordingView.swift */,
+				24141FA629B7BEA300904ABC /* RecordingButtonView.swift */,
 				24141FA229B790C400904ABC /* Recording.swift */,
 			);
 			name = Audio;
@@ -436,6 +439,7 @@
 				0E9F458629B5DE29002AA577 /* NoteScore.swift in Sources */,
 				0EAFED9629A8DB6E00EFAD2B /* ScoreStore.swift in Sources */,
 				24141F9429B75A6300904ABC /* AudioManager.swift in Sources */,
+				24141FA729B7BEA300904ABC /* RecordingButtonView.swift in Sources */,
 				0E7F165429ACC3340067AEA2 /* MidiModel.swift in Sources */,
 				0E9F458B29B5DE29002AA577 /* ScorePartwise.swift in Sources */,
 				0E9F458729B5DE29002AA577 /* BeatTypeModel.swift in Sources */,
