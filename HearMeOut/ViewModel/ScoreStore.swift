@@ -16,7 +16,7 @@ class ScoreStore: ObservableObject {
     
     init() {
         if !firstLoad {
-            firstUpload()
+//            firstUpload()
         }
         fetchScores()
         checkDeletedFile()

@@ -13,39 +13,37 @@ import XMLCoder
 struct LibraryView: View {
     @State private var openFile = false
     @State var showingAlert = false
-    @State var url: URL?
     @StateObject private var viewModel = ScoreStore()
-    @State private var selectedFile: IdentifiedURL?
+    @State private var path = NavigationPath()
+    
     var body: some View {
-        NavigationStack {
-            if let url = url {
-                ScoreView(url: url)
-            } else {
-                List(){
-                    ForEach(viewModel.filteredScores) { score in
-                        if let destination = ScoreView(url: score.path!) {
-                            NavigationLink(destination: destination) {
-                                ScoreRowView(score: score)
-                            }
+        NavigationStack(path: $path) {
+            List{
+                ForEach(viewModel.filteredScores) { score in
+                        NavigationLink(value: score) {
+                            ScoreRowView(score: score)
                         }
-                    }
-                    .onDelete(perform: viewModel.deleteItems)
-                }.navigationTitle("Scores").toolbar{
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Add") {
-                            self.openFile.toggle()
-                        }
+                }.onDelete(perform: viewModel.deleteItems)
+            }
+            .navigationTitle("Scores").toolbar{
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Add") {
+                        self.openFile.toggle()
                     }
                 }
             }
+            .navigationDestination(for: Score.self){ score in
+                ScoreView(url: score.path!)
+            }
         }
         .alert("Attention: you have already added this file", isPresented: $showingAlert) {
-                    Button("OK", role: .cancel) { }
+            Button("OK", role: .cancel) {}
         }
         .searchable(text: $viewModel.searchText, prompt: "Songs, Composer...")
         .fileImporter(isPresented: $openFile, allowedContentTypes: [UTType(filenameExtension: "musicxml")!]) { (res) in
             do {
                 let fileUrl = try res.get()
+                print(fileUrl)
                 showingAlert = MusicScoreLoader().loadMusicScore(url: fileUrl, viewModel: viewModel)
             } catch {
                 print ("error reading")
@@ -54,7 +52,7 @@ struct LibraryView: View {
         }
         .onOpenURL{ url in
             _ = MusicScoreLoader().loadMusicScore(url: url, viewModel: viewModel)
-            self.url = url
+            path.append(viewModel.retrieveScore(path: url))
         }
     }
 }
@@ -86,22 +84,17 @@ struct MusicScoreLoader {
 //    }
 //}
 
-struct IdentifiedURL: Identifiable {
-    var id = UUID()
-    var url: URL
-}
-
 private struct ScoreRowView: View {
     let score: Score
     var body: some View {
         HStack(spacing: 16){
             Image(systemName: "music.note.list").font(.system(size: 35.0)).foregroundColor(.accentColor)
-                VStack(alignment: .leading){
-                    Text(score.movementTitle ?? "No title").bold()
-                    Text(score.composer ?? "")
-                    Spacer()
-                }
+            VStack(alignment: .leading){
+                Text(score.movementTitle ?? "No title").bold()
+                Text(score.composer ?? "")
+                Spacer()
             }
-            Spacer()
+        }
+        Spacer()
     }
 }
