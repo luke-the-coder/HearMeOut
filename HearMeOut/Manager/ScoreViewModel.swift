@@ -196,6 +196,8 @@ class ScoreViewModel: ObservableObject {
     private func generateStaffDictionary() {
         guard let originalScore else { return }
         
+        staffDictionary = []
+        
         guard let measure = originalScore.part.measure.first else { return }
         
         for staves in 0..<measure.attributes.staves {

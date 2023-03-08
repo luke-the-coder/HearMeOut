@@ -13,7 +13,7 @@ struct SiriAppShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
             intent: NextStep(),
-            phrases: ["Next \(.applicationName)"] //\(.applicationName)
+            phrases: ["Go next step \(.applicationName)r"] //
         )
         AppShortcut(
             intent: PreviousStep(),
