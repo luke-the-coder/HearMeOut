@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecordingView: View {
-    
+    @Environment (\.dismiss) private var dismiss
     @StateObject private var audioPlayer = AudioPlayer()
     let fileName: String
   
@@ -48,10 +48,23 @@ struct RecordingView: View {
                         .shadow(radius: 10)
                     
                    
-                } .navigationTitle("Recording List")
-                    .onAppear {
+                }
+                .navigationTitle("Recording List")
+                .onAppear {
                         audioPlayer.fetchAllRecording(folderName: fileName)
                     }
+                .interactiveDismissDisabled()
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Text("Done")
+                        }
+                        .disabled(audioPlayer.isRecording)
+
+                    }
+                }
                 
          
             }
