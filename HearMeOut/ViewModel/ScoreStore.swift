@@ -113,10 +113,7 @@ class ScoreStore: ObservableObject {
     }
     
     func deleteScore(Score: Score) {
-        guard let title = Score.movementTitle else { return }
-        if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            
-            let fileURL = directory.appendingPathComponent(title)
+        guard let fileURL = Score.path else { return }
             
             do {
                 try FileManager.default.removeItem(at: fileURL)
@@ -125,7 +122,7 @@ class ScoreStore: ObservableObject {
             } catch {
                 print("deleting \(error.localizedDescription)")
             }
-        }
+        
         
     }
     

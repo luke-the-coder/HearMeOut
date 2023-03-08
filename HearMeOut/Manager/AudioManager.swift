@@ -217,7 +217,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     }
     
     private func getUrlForFolder(folderName: String) -> URL? {
-        guard let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else { return nil }
+        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         return url.appendingPathComponent(folderName)
     }
     

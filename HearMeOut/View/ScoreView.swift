@@ -28,12 +28,12 @@ struct ScoreView: View {
     
 //    let scoreData : Score
     private let columns: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
+        GridItem(.fixed(45)),
+        GridItem(.fixed(45)),
+        GridItem(.fixed(45)),
+        GridItem(.fixed(45)),
+        GridItem(.fixed(45)),
+//        GridItem(.fixed(50)),
     ]
     let url: URL
     
@@ -159,8 +159,6 @@ struct ScoreView: View {
                                 ForEach(group.note, id: \.self) { notes in
                                     PitchView(notes: notes)
                                         .accessibility(sortPriority: 0)
-                                        
-                                    
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)

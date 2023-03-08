@@ -43,3 +43,55 @@
 "Previous" = "Precedente";
 
 "Attention: you have already added this file" = "Attenzine: hai già aggiunto questo file";
+
+"Key," = "Chiave,";
+
+"Chord," = "Accordo,";
+
+"rest" = "pausa";
+
+"sharp" = "diesis";
+
+"flet" = "bemolle";
+
+"end chord" = "fine accordo";
+
+"A" = "LA";
+
+"B" = "SI";
+
+"C" = "DO";
+
+"D" = "RE";
+
+"E" = "MI";
+
+"F" = "FA";
+
+"G" = "SOL";
+
+"Okay, next measure performed" = "Okay, prossima battuta";
+
+"Okay, previous measure performed" = "Okay, battuta precedente";
+
+"Next" = "Prossima";
+
+"Previous" = "Precedente";
+
+"oneQuarter" = "un, quarto";
+
+"twoQuarter" = "due, quarti";
+
+"threeQuarter" = "tre, quarti";
+
+"fourQaurter" = "quattro, quarti";
+
+"threeEight" = "tre, ottavi";
+
+"sixtEight" = "sei, ottavi";
+
+"nineEight" = "nove, ottavi";
+
+"twelveEight" = "dodici, ottavi";
+
+"Your recordings" = "Le tue registrazioni";
