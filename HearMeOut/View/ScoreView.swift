@@ -16,7 +16,7 @@ enum FocusModel: Hashable {
 struct ScoreView: View {
     @State private var isNavigated: Bool = false
     @State private var isActive: Bool = false
-    @StateObject private var vm: ScoreViewModel
+    @StateObject private var vm: ScoreViewModel = ScoreViewModel.shared
     @State private var clef: [ClefScore] = []
     @State private var beatType: BeatType = .none
     @State private var focusArray: [FocusModel] = [FocusModel.note(id: 0), FocusModel.note(id: 1)]
@@ -35,10 +35,12 @@ struct ScoreView: View {
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
+    let url: URL
     
     init(url: URL, fileName: String) {
-        self._vm = StateObject(wrappedValue: ScoreViewModel(url: url))
+//        self._vm = StateObject(wrappedValue: ScoreViewModel(url: url))
 //        self.scoreData = ScoreStore().retrieveScore(path: url)
+        self.url = url
         self.fileName = fileName
     }
     
@@ -98,6 +100,7 @@ struct ScoreView: View {
             }
         }
         .onAppear {
+            vm.decodeScoreFrom(url)
             if let score = vm.musicScore {
                 for _ in  score.part.measure[vm.measureIndex].staffGroup {
                     if !score.part.measure[vm.measureIndex].attributes.clef.isEmpty {

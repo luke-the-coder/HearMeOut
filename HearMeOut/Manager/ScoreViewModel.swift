@@ -12,6 +12,9 @@ import AVFAudio
 import Combine
 
 class ScoreViewModel: ObservableObject {
+    
+    static let shared = ScoreViewModel()
+    
     @Published var musicScore: ScorePartwise?
     @Published private var originalScore: ScorePartwise?
     @Published var measureIndex: Int = 0
@@ -75,8 +78,8 @@ class ScoreViewModel: ObservableObject {
     }
     
     
-    init(url: URL) {
-        originalScore = parserManager.parseFromUrl(url: url)
+    private init() {
+        
         
         $originalScore
             .combineLatest($staffDictionary)
@@ -88,10 +91,16 @@ class ScoreViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
+        
+        
+    }
+    
+    func decodeScoreFrom(_ url: URL) {
+        measureIndex = 0
+        originalScore = parserManager.parseFromUrl(url: url)
         generateStaffDictionary()
         
         generateFocusArray()
-        
     }
     
     func goNext() {

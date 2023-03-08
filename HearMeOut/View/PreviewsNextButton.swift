@@ -76,6 +76,6 @@ struct PreviewsNextButton: View {
 
 struct PreviewsNextButton_Previews: PreviewProvider {
     static var previews: some View {
-        PreviewsNextButton(vm: ScoreViewModel(url: Bundle.main.url(forResource: "Chant" , withExtension: "musicxml")!))
+        PreviewsNextButton(vm: ScoreViewModel.shared)
     }
 }
