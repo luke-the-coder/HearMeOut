@@ -21,21 +21,21 @@ enum BeatType: String {
     var description: String {
         switch self {
         case .oneQuarter:
-            return "oneQuarter"
+            return String(localized: "oneQuarter", table: "Localizable")
         case .twoQuarter:
-            return "twoQuarter"
+            return String(localized: "twoQuarter", table: "Localizable")
         case .threeQuarter:
-            return "threeQuarter"
+            return String(localized: "threeQuarter", table: "Localizable")
         case .fourQaurter:
-            return "fourQaurter"
+            return String(localized: "fourQaurter", table: "Localizable")
         case .threeEight:
-            return "threeEight"
+            return String(localized: "oneQuarter", table: "Localizable")
         case .sixtEight:
-            return "sixtEight"
+            return String(localized: "sixtEight", table: "Localizable")
         case .nineEight:
-            return "nineEight"
+            return String(localized: "nineEight", table: "Localizable")
         case .twelveEight:
-            return "twelveEight"
+            return String(localized: "twelveEight", table: "Localizable")
         case .none:
             return ""
             

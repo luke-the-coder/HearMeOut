@@ -15,10 +15,13 @@ class ParserManager {
     }
     
     func parseFromUrl(url: URL) -> ScorePartwise? {
-//        print("parseFromUrl \(url)")
+//        print("URL EXT 1 \(url)")
+//        guard url.startAccessingSecurityScopedResource() else { return nil }
+        print("URL EXT 2 \(url)")
         // MozartPianoSonata
-        let url: URL = Bundle.main.url(forResource: "MozartPianoSonata" , withExtension: "musicxml")!
-//        print("parseFromUrl \(url)")
+//        let url: URL = Bundle.main.url(forResource: "MozartPianoSonata" , withExtension: "musicxml")!
+//        print("URL BUNDLE \(url)")
+        
         do {
             let string = try String(contentsOf: url)
             let data = string.data(using: .utf8)!
@@ -28,6 +31,7 @@ class ParserManager {
             parser.delegate = score
 
             parser.parse()
+//            url.stopAccessingSecurityScopedResource()
             return score
             //print("SCORE: \(score.work.workTitle)")
         } catch {

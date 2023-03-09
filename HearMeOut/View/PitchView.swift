@@ -16,14 +16,15 @@ struct PitchView: View {
             ForEach(notes) { note in
                 if note.pitch.step != .none {
                     HStack { 
-                        Text(note.pitch.step.rawValue)
+                        Text(LocalizedStringKey(note.pitch.step.rawValue))
+                            .fixedSize(horizontal: false, vertical: true)
                         VStack {
                             Text(note.pitch.alter == 1 ? "#" : note.pitch.alter == -1 ? "b" : "")
                                 .font(.caption)
                             Text("\(note.pitch.octave)")
                                 .font(.caption)
                         }
-                    }    
+                    }
                 }
             }
         }

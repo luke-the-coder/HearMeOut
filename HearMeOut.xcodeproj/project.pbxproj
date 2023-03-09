@@ -60,7 +60,14 @@
 		0EDCD078299A4EF100E4AF25 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCD077299A4EF100E4AF25 /* LibraryView.swift */; };
 		0EDCD07A299A4EF200E4AF25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCD079299A4EF200E4AF25 /* Assets.xcassets */; };
 		0EDCD07D299A4EF200E4AF25 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCD07C299A4EF200E4AF25 /* Preview Assets.xcassets */; };
+		24141F9429B75A6300904ABC /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141F9329B75A6300904ABC /* AudioManager.swift */; };
+		24141F9F29B7610D00904ABC /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141F9E29B7610D00904ABC /* RecordingView.swift */; };
+		24141FA329B790C400904ABC /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141FA229B790C400904ABC /* Recording.swift */; };
+		24141FA729B7BEA300904ABC /* RecordingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24141FA629B7BEA300904ABC /* RecordingButtonView.swift */; };
 		246CE21929AE0AC900CF4AA8 /* PitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246CE21829AE0AC900CF4AA8 /* PitchView.swift */; };
+		4038EB5E29B8501A00C67259 /* NextStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038EB5D29B8501A00C67259 /* NextStep.swift */; };
+		4038EB6029B8511D00C67259 /* PreviousStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038EB5F29B8511D00C67259 /* PreviousStep.swift */; };
+		4038EB6229B8519B00C67259 /* SiriAppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038EB6129B8519B00C67259 /* SiriAppShortcuts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,8 +117,8 @@
 		0E9F458229B5DE29002AA577 /* MeasureScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureScore.swift; sourceTree = "<group>"; };
 		0E9F458329B5DE29002AA577 /* PitchScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchScore.swift; sourceTree = "<group>"; };
 		0E9F458429B5DE29002AA577 /* AttributeScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeScore.swift; sourceTree = "<group>"; };
-		0E9F459329B5DE87002AA577 /* Full Grand Piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Full Grand Piano.sf2"; sourceTree = "<group>"; };
-		0E9F459529B5DEC2002AA577 /* GeneralUser GS MuseScore v1.442.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralUser GS MuseScore v1.442.sf2"; sourceTree = "<group>"; };
+		0E9F459329B5DE87002AA577 /* Full Grand Piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Full Grand Piano.sf2"; sourceTree = "<group>"; };
+		0E9F459529B5DEC2002AA577 /* GeneralUser GS MuseScore v1.442.sf2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GeneralUser GS MuseScore v1.442.sf2"; sourceTree = "<group>"; };
 		0EAFED9529A8DB6E00EFAD2B /* ScoreStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStore.swift; sourceTree = "<group>"; };
 		0EB092CA29AA2BF00041C330 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		0EB0970E29A7DEC500D3EDD3 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
@@ -131,7 +138,14 @@
 		0EDCD077299A4EF100E4AF25 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		0EDCD079299A4EF200E4AF25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EDCD07C299A4EF200E4AF25 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		24141F9329B75A6300904ABC /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		24141F9E29B7610D00904ABC /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
+		24141FA229B790C400904ABC /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		24141FA629B7BEA300904ABC /* RecordingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingButtonView.swift; sourceTree = "<group>"; };
 		246CE21829AE0AC900CF4AA8 /* PitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchView.swift; sourceTree = "<group>"; };
+		4038EB5D29B8501A00C67259 /* NextStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextStep.swift; sourceTree = "<group>"; };
+		4038EB5F29B8511D00C67259 /* PreviousStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousStep.swift; sourceTree = "<group>"; };
+		4038EB6129B8519B00C67259 /* SiriAppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriAppShortcuts.swift; sourceTree = "<group>"; };
 		7D71C20829B1EF020088BA8E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Languages/it.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +179,7 @@
 				0E7F163729ACC2600067AEA2 /* ScoreViewModel.swift */,
 				0E7F163629ACC2600067AEA2 /* ParserManager.swift */,
 				0E9F456C29B5DCD9002AA577 /* MidiManager.swift */,
+				24141F9929B75C8500904ABC /* Audio */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -234,6 +249,7 @@
 		0EAFED9429A8DB3800EFAD2B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4038EB5C29B84FFB00C67259 /* Intents */,
 				0E9F457229B5DD4B002AA577 /* SettingsDivisions.swift */,
 				0E7F165029ACC3120067AEA2 /* ScoreModels */,
 				0ECBA2E429A97C5B009BA16C /* ScoreModel.swift */,
@@ -303,6 +319,27 @@
 				0EDCD07C299A4EF200E4AF25 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		24141F9929B75C8500904ABC /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				24141F9329B75A6300904ABC /* AudioManager.swift */,
+				24141F9E29B7610D00904ABC /* RecordingView.swift */,
+				24141FA629B7BEA300904ABC /* RecordingButtonView.swift */,
+				24141FA229B790C400904ABC /* Recording.swift */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		4038EB5C29B84FFB00C67259 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				4038EB5D29B8501A00C67259 /* NextStep.swift */,
+				4038EB5F29B8511D00C67259 /* PreviousStep.swift */,
+				4038EB6129B8519B00C67259 /* SiriAppShortcuts.swift */,
+			);
+			path = Intents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,12 +455,18 @@
 				0E9F459029B5DE29002AA577 /* MeasureScore.swift in Sources */,
 				0E9F458629B5DE29002AA577 /* NoteScore.swift in Sources */,
 				0EAFED9629A8DB6E00EFAD2B /* ScoreStore.swift in Sources */,
+				24141F9429B75A6300904ABC /* AudioManager.swift in Sources */,
+				24141FA729B7BEA300904ABC /* RecordingButtonView.swift in Sources */,
 				0E7F165429ACC3340067AEA2 /* MidiModel.swift in Sources */,
 				0E9F458B29B5DE29002AA577 /* ScorePartwise.swift in Sources */,
 				0E9F458729B5DE29002AA577 /* BeatTypeModel.swift in Sources */,
 				0EB092CB29AA2BF00041C330 /* SettingView.swift in Sources */,
+				4038EB5E29B8501A00C67259 /* NextStep.swift in Sources */,
+				24141F9F29B7610D00904ABC /* RecordingView.swift in Sources */,
 				0E9F457529B5DDD4002AA577 /* StaffSettingModel.swift in Sources */,
+				24141FA329B790C400904ABC /* Recording.swift in Sources */,
 				0E9F458A29B5DE29002AA577 /* BackupScore.swift in Sources */,
+				4038EB6229B8519B00C67259 /* SiriAppShortcuts.swift in Sources */,
 				0EDCD076299A4EF100E4AF25 /* HearMeOutApp.swift in Sources */,
 				0E9F457029B5DD28002AA577 /* DivisionView.swift in Sources */,
 				0E9F456D29B5DCD9002AA577 /* MidiManager.swift in Sources */,
@@ -433,6 +476,7 @@
 				0EB0971129A7DECF00D3EDD3 /* Persistence.swift in Sources */,
 				0E9F457329B5DD4B002AA577 /* SettingsDivisions.swift in Sources */,
 				0ECBA2E329A969BB009BA16C /* ScoreView.swift in Sources */,
+				4038EB6029B8511D00C67259 /* PreviousStep.swift in Sources */,
 				0E7F163929ACC2600067AEA2 /* ScoreViewModel.swift in Sources */,
 				0E7F161729ACC1B70067AEA2 /* ScaleModel.swift in Sources */,
 				0ECBA2E529A97C5B009BA16C /* ScoreModel.swift in Sources */,
@@ -601,10 +645,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"HearMeOut/Preview Content\"";
-				DEVELOPMENT_TEAM = 2MD4NXFV5G;
+				DEVELOPMENT_TEAM = 7AGYKJGT3A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HearMeOut/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to access your microphone";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -634,10 +680,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"HearMeOut/Preview Content\"";
-				DEVELOPMENT_TEAM = 2MD4NXFV5G;
+				DEVELOPMENT_TEAM = 7AGYKJGT3A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HearMeOut/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to access your microphone";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

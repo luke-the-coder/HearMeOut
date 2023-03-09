@@ -176,7 +176,7 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SettingsView(scoreViewModel: ScoreViewModel(url: Bundle.main.url(forResource: "Chant" , withExtension: "musicxml")!))
+            SettingsView(scoreViewModel: ScoreViewModel.shared)
         }
         
     }

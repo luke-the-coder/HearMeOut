@@ -10,8 +10,12 @@ import MidiParser
 import AVFoundation
 import AVFAudio
 import Combine
+import SwiftUI
 
 class ScoreViewModel: ObservableObject {
+    
+    static let shared = ScoreViewModel()
+    
     @Published var musicScore: ScorePartwise?
     @Published private var originalScore: ScorePartwise?
     @Published var measureIndex: Int = 0
@@ -75,8 +79,8 @@ class ScoreViewModel: ObservableObject {
     }
     
     
-    init(url: URL) {
-        originalScore = parserManager.parseFromUrl(url: url)
+    private init() {
+        
         
         $originalScore
             .combineLatest($staffDictionary)
@@ -88,10 +92,16 @@ class ScoreViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
+        
+        
+    }
+    
+    func decodeScoreFrom(_ url: URL) {
+        measureIndex = 0
+        originalScore = parserManager.parseFromUrl(url: url)
         generateStaffDictionary()
         
         generateFocusArray()
-        
     }
     
     func goNext() {
@@ -185,6 +195,8 @@ class ScoreViewModel: ObservableObject {
         
     private func generateStaffDictionary() {
         guard let originalScore else { return }
+        
+        staffDictionary = []
         
         guard let measure = originalScore.part.measure.first else { return }
         
@@ -337,8 +349,8 @@ class ScoreViewModel: ObservableObject {
                     print("indexStaf \(indexStaf)")
                 }
                 print("key")
-                string += "Key,"
-                string += clef[indexStaf].sign.rawValue
+                string += String(localized: "Key,", table: "Localizable")
+                string += NSLocalizedString(clef[indexStaf].sign.rawValue, tableName: "Localizable", comment: "pitch")
                 string += ","
             }
             if beatType != .none {
@@ -348,24 +360,22 @@ class ScoreViewModel: ObservableObject {
             for group in 0..<measure.staffGroup[staff].group.count {
                 for noteGroup in measure.staffGroup[staff].group[group].note {
                     if noteGroup.count > 1 {
-                        string += "Chord,"
+                        string += String(localized: "Chord,", table: "Localizable")
                     }
                     
                     for note in noteGroup {
-                        string += "\(note.isRest ? "rest" : note.pitch.step.rawValue) \(note.pitch.octave)"
+                        string += "\(note.isRest ? "rest" : NSLocalizedString(note.pitch.step.rawValue, tableName: "Localizable", comment: "pitch")) \(note.pitch.octave)"
+                        
                             if note.pitch.alter == 1 {
-                                string += "sharp"
+                                string += String(localized: "sharp", table: "Localizable")
                             } else if note.pitch.alter == -1 {
-                                string += "flet"
+                                string += String(localized: "flet", table: "Localizable")
                             }
-                            
                         string += ","
-                        
-                        
                     }
                     
                     if noteGroup.count > 1 {
-                        string += "end chord"
+                        string += String(localized: "end chord", table: "Localizable")
                     }
                 }
             }
